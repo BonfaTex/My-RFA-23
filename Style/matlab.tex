@@ -1,0 +1,103 @@
+% =====================================================================================
+% Packages Required
+% =====================================================================================
+%\usepackage{listings}
+\usepackage{matlab-prettifier}
+\usepackage[most]{tcolorbox}
+%\tcbuselibrary{listings,breakable}
+
+% =====================================================================================
+% Marker setup
+% =====================================================================================
+
+\newtcolorbox{marker}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={%
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white,rotate=0]{\Huge\bfseries ! } ([xshift=4mm]interior.north west);
+    },
+    drop fuzzy shadow,#1}
+
+%\tcbset{colback=white,colframe=teal,fonttitle=\bfseries,adjusted title=left,breakable=true}
+%\begin{tcolorbox}[title=Teorema di unicità]
+%Hello
+%\end{tcolorbox}
+
+% =====================================================================================
+% Listing setup
+% =====================================================================================
+
+\lstdefinestyle{myListing}{
+    language=Matlab,
+    style=Matlab-editor,
+    %mlsectiontitlestyle=\scshape\color[RGB]{34,139,34},
+    mlsectiontitlestyle=\bfseries\color[RGB]{34,139,34},
+    %basicstyle=\small\ttfamily,
+    basicstyle=\mlttfamily,
+    literate=
+    {è}{{\mlttfamily\`e}}1
+    {à}{{\mlttfamily\`a}}1
+    {ì}{{\mlttfamily\`i}}1
+    {ò}{{\mlttfamily\`o}}1
+    {ù}{{\mlttfamily\`u}}1
+    {-}{{\ttfamily -}}1,
+    frame=none,
+    keywordstyle=\color[RGB]{0,0,255},
+    commentstyle=\color[RGB]{34,139,34},
+    stringstyle=\color[RGB]{160,32,240},
+    keepspaces,
+    %morecomment=[l][\color[RGB]{0,0,255}]{...},
+    deletekeywords={%
+        size,subplot,plot,xlabel,ylabel,rand,quad,randn,sin,cos,clear,disp,input,fprintf,strcmp,norm,cond,%
+        tril,ceil,max,abs,eig,pi,sqrt,round,eye,eps,diag,length,zeros,beta,linspace,end,spdiags,sum,log2,%
+    },
+}
+
+%\lstMakeShortInline[style=mylisting]"
+
+% =====================================================================================
+% matlabcode
+% =====================================================================================
+
+\newtcblisting{matlab}{
+    top=-2mm,
+    bottom=-3mm,
+    left=0mm,
+    right=0mm,
+    boxrule=1.5pt,
+    colframe=gray!30!white,
+    arc=1mm,
+    boxrule=1pt,
+    colback=gray!10!white,
+    listing only,
+    listing options={style=myListing},
+    minipage,
+    width=\linewidth,
+    breakable=true,
+}
+
+% =====================================================================================
+% matlaboutput
+% =====================================================================================
+
+\RequirePackage{verbatim}
+\RequirePackage{fancyvrb}
+\RequirePackage{color}
+
+\newcommand{\maxwidth}[1]{\ifdim\linewidth>#1 #1\else\linewidth\fi}
+\newcommand{\mlcell}[1]{{\color{output}\verbatim@font#1}}
+
+\definecolor{output}{gray}{0.4}
+
+% Unicode character conversions
+\DeclareUnicodeCharacter{B0}{\ensuremath{^\circ}}
+\DeclareUnicodeCharacter{21B5}{\ensuremath{\hookleftarrow}}
+
+\newenvironment{matlaboutput}{%
+        \Verbatim[xleftmargin=1.25em, formatcom=\color{output}]%
+}{\endVerbatim}

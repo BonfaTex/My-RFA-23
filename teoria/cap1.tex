@@ -1,0 +1,260 @@
+%!TEX root = ../main.tex
+
+\chapter{Set Theory} % (fold)
+\label{cha:set_theory}
+\thispagestyle{empty}
+
+\section{Equipotent, finite/infinite, countable/uncountable sets, cardinality of continuoum} % (fold)
+\label{sec:equipotent_finite_infinite_countable_uncountable_sets_cardinality_of_continuoum}
+
+Let $X,Y$ be sets.
+
+\begin{defn}[Equipotent sets]$\\$
+$X,Y$ are equipotent if there exists a bijection $f:X\to Y$ (1-1 injective + onto surjective).
+\end{defn}
+
+If $X,Y$ are equipotent, then they have the same cardinality. On the other hand, $X$ has cardinality $\geq$ than $Y$ if there exists $f:X\to Y$ onto. For example, for
+\begin{equation*}
+X= 
+\begin{pmatrix}
+ 1\\
+ 2\\
+ 3
+\end{pmatrix} \qquad Y=\begin{pmatrix}
+ 1\\
+ 2
+\end{pmatrix}
+\end{equation*}
+
+exists $f:X\to Y$ s.t. $\forall y\in Y\ \exists x\in X$ s.t. $f(x)=y$ ($f$ \emph{takes} all the elements of the codomain), but doesn't exist $g:Y\to X$ s.t. $\forall x\in X\ \exists y\in Y$ s.t. $g(y)=x$ ($g$ doesn't \emph{take} all the elements of the codomain).
+
+\begin{defn}[Finite/infinite sets]$\\$
+$X$ is finite if it is equipotent to $Y=\{1,2,...,k\}$ for some $k\in\NN$. $X$ is infinite otherwise.
+\end{defn}
+
+\begin{prp}
+$X$ is infinite iff it is equipotent to a proper subset, i.e. if exists a bijection between $X$ and one of his subsets.
+\end{prp}
+
+For example, between the integers set $\ZZ=\{0,\pm1,\pm2,...\}$ and the even integers set $\{0,\pm2,\pm4,...\}$ there exists $f$ s.t. $f(z)=2z$ which is a bijection.
+
+\begin{defn}[Countable/uncountable (infinite) sets]$\\$
+$X$ inifinite is countable if it is equipotent to $\NN$. It is uncountable otherwise, in which case is more than countable (countable sets are the "smallest" among infinite sets).
+\end{defn}
+
+\begin{defn}[Cardinality of continuoum]$\\$
+$X$ has the cardinality of continuoum if it is equipotent to $\RR$. Any such set is uncountable.
+\end{defn}
+
+For example:
+\begin{itemize}
+	\item $\NN,\ZZ,\QQ$ are countable
+	\item $\RR,\RR^N,(0,1),(0,1)^N$ have the cardinality of continuoum
+	\item countable unions of countable sets are countable
+\end{itemize}
+
+% section equipotent_finite_infinite_countable_uncountable_sets_cardinality_of_continuoum (end)
+
+\section{Families of subsets} % (fold)
+\label{sec:families_of_subsets}
+
+Let $X$ be a set.
+
+\begin{defn}[Power set]$\\$
+The power set of $X$, i.e. the set of all subsets of $X$, is
+\begin{equation*}
+    \Pc(X)=\gr{Y\,:\,Y\subset X}
+\end{equation*}
+It is sometimes denoted as $2^X$.
+\end{defn}
+
+The power set has cardinality strictly bigger than $X$. For example, $\Pc(\NN)$ has the cardinality of continuoum.
+
+\begin{defn}[Family of subsets]$\\$
+A family, or collection, of subsets of $X$ is just $\Cc\subset\Pc(X)$. Tipically, a family of subsets (induced by $I\subset\RR$ set of indexes) is $\Cc=\gr{E_i}_{i\in I}$ where $E_i\subset X$ $\forall i\in I$.
+\end{defn}
+
+For example, $\left\{E_1,E_2,E_3\right\}$ is a family of subsets.
+
+\begin{defn}[Union and intersection]$\\$
+Given a family of sets $\left\lbrace E_i \right\rbrace_{i \in I} \subset \mathcal{P}(X)$, will often be considered
+\begin{align*}
+\bigcup_{i \in I} E_i &= \gr{x \in X\,:\, \exists i \in I \text{ s.t. } x \in E_i} \\ 
+\bigcap_{i \in I} E_i &= \gr{x \in X\,:\,x \in E_i\ \forall i \in I}  
+\end{align*}
+
+$\gr{E_i}$ is said to be (pairwise) disjoint if $E_i \cap E_j = \emptyset$ $\forall i \not = j$.
+\end{defn}
+
+\begin{exa}[Standard topology of \texorpdfstring{$\RR$}{C}]$\\$
+Given $X=\RR$ $\td{\text{or }\RR^N}$, the standard/euclidian topology of $\RR$ $\td{\text{or }\RR^N}$ is $\Tc=\gr{E\subset X\,:\,E\text{ is open}}$, i.e. it is the family of all open subsets of $X$. \\
+More generally, this can be defined in metric spaces $\td{X,d}$ where $X$ is a set and $d$ a distance between $x,y\in X$.
+
+Some properties of $\Tc$:
+\begin{itemize}
+    \item $\varnothing,X\in\Tc$
+    \item finite intersection of open sets is open [$\circledast$]
+    \item any (finite/infinite, countable/uncountable, ...) union of open sets is open [$\circledcirc$]
+\end{itemize}
+\end{exa}
+
+\begin{defn}[Covering and subcovering]$\\$
+$\gr{E_i}_{i\in I}$ is a covering of $X$ if $X=\bigcup_{i\in I} E_i$. Any subfamily $\gr{E_i}_{i\in J, J\subset I}$ is a subcovering if it is a covering.
+\end{defn}
+
+% section families_of_subsets (end)
+
+\newpage
+
+\section{Sequences of sets} % (fold)
+\label{sec:sequences_of_sets}
+
+A sequence is just a family of subsets where $I\equiv \NN$, e.g. $\gr{E_n}_{n\in \NN}$. 
+
+\begin{defn}[Monotone sequences]$\\$
+$\gr{E_n}$ is increasing (not decreasing), $\gr{E_n}\nearrow$, if $E_n\subset E_{n+1}\ \forall n\in\NN$. On the other hand, $\gr{E_n}$ is decreasing (not increasing), $\gr{E_n}\searrow$, if $E_{n+1}\subset E_{n}\ \forall n\in\NN$. If $\gr{E_n}$ is increasing/decreasing then it is monotone.
+\end{defn}
+
+For example, given $X=\RR$ and $E_n\displaystyle=\td{-\frac{1}{n},1+\frac{1}{n}}$ for $n\geq 1$, we can say that $E_n$ is a monotone decreasing sequence:
+\fg{0.3}{endrc}
+
+But what is $\bigcap_{n=1}^\infty E_n$? We know that 
+\begin{equation*}
+    \bigcap_{n=1}^\infty E_n=[0,1]
+\end{equation*}
+
+and this is an infinite intersection of open sets (this does not disagree with the prop $\circledast$). This type of intersection is called "G$\delta$-set": a countable intersection of open sets.
+
+Similarly, $E_n=\displaystyle\qu{a+\frac{1}{n},b-\frac{1}{n}}$, a<b, is increasing and 
+\begin{equation*}
+    \bigcup_{n=1}^\infty E_n=(a,b)
+\end{equation*}
+is called "F$\sigma$-set": a countable union of closed sets (doesn't disagree with $\circledcirc$).
+
+\begin{defn}[lim sup and lim inf]$\\$
+Let $\gr{E_n}_{n\in\NN}\subset\Pc$. We define
+\begin{equation*}
+    \limsup_{n} E_n := \bigcap_{n = 1}^{\infty} \left(\bigcup_{k = n}^{\infty} E_k\right)
+    \qquad
+    \liminf_{n} E_n := \bigcup_{n = 1}^{\infty} \left(\bigcap_{k = n}^{\infty} E_k\right)
+\end{equation*}
+
+If these two sets are equal
+\begin{equation*}
+    \limsup_n E_n = \liminf_n E_n = \lim_n E_n = F
+\end{equation*}
+then $F$ is the limit of the succession.
+\end{defn}
+
+Take note that $\gr{E_n}\nearrow \td{\text{resp. }\searrow} \Longrightarrow \exists \lim_n E_n=\bigcup_n E_n \td{\text{resp. }\bigcap_n E_n}$.
+
+\begin{es}
+Looking at the previous definition of lim sup, we can easily proof that
+    \begin{equation*}
+        x\in \limsup_n E_n \Longleftrightarrow x\in \bigcup_{n=k}^{\infty} E_n\ \forall k \Longleftrightarrow x\in E_n\text{ for }\infty\text{-ly many }n  
+    \end{equation*}
+
+    A property that is true for infinitely many $n$ is said to be true \emph{frequently}. Similarly:
+    \begin{equation*}
+        x\in \liminf_n E_n \Longleftrightarrow x\in \bigcap_{n=k}^{\infty} E_n \text{ for at least one } \overline{k} \Longleftrightarrow x\in E_n\ \forall n\geq\overline{k}
+    \end{equation*}
+
+    A property that is only true after $n$ large enough is said to be true \emph{eventually}.
+\end{es}
+
+% section sequences_of_sets (end)
+
+\section{Charateristic functions} % (fold)
+\label{sec:charateristic_functions}
+
+Let $X$ be a set.
+
+\begin{defn}[Charateristic function]$\\$
+Given $E \subset X$, we define the charateristic (or indicator) function
+\begin{equation*}
+\chi_E:X\to\RR\quad\text{s.t.}\quad \chi_E(x)=
+\begin{cases}
+    1 &x\in E \\
+    0 &x\not\in E\ \td{\text{or }x\in E^c=X\setminus E}
+\end{cases}
+\end{equation*}
+
+(another notation: $\Ind_E(x)$)
+\end{defn}
+
+\begin{prp}\leavevmode
+    \begin{itemize}
+        \item $\chi_{E_1 \bigcap E_2} = \chi_{E_1} \cdot \chi_{E_2}$
+        \item $\chi_{E_1 \bigcup E_2} = \chi_{E_1} + \chi_{E_2} - \chi_{E_1} \cdot \chi_{E_2} $
+        \item $\chi_{\limsup_n E_n} = \limsup_n \chi_{E_n}$ and likewise $\chi_{\liminf_n E_n} = \liminf_n \chi_{E_n}$
+        \begin{marker}
+        Take note that the first lim sup/inf refers to sets, the second one to (real) numbers.
+        \end{marker}
+    \end{itemize}
+\end{prp}
+
+% section charateristic_functions (end)
+
+\section{Relations, Equivalence relations} % (fold)
+\label{sec:relations_equivalence_relations}
+
+\begin{defn}[Cartesian product and Relations]$\\$
+If $X$ and $Y$ are sets, their Cartesian product $X\times Y$ is the set of all ordered pairs $(x,y)$ such that $x\in X$ and $y\in Y$. A relation from $X$ to $Y$ is a subset of $X\times Y$. If $R$ is a relation from $X$ to $Y$, we shall sometimes write $xRy$ to mean that $(x,y)\in R$. \\
+If $Y=X$, we speak of a relation \underline{on} X. For example, $xRy \Longleftrightarrow y=x^2$.
+\end{defn}
+
+The most important types of relations are the following:
+
+\begin{defn}[Equivalence relations]$\\$
+    An equivalence relation is a relation $R$ s.t.
+    \begin{itemize}
+        \item[i)] {\makebox[5cm]{$xRx\  \forall x\in X$\hfill} (reflexive)}
+        \item[ii)] {\makebox[5cm]{$xRy\ \Longleftrightarrow\ yRx \ \forall x,y $\hfill} (symmetric)}
+        \item[iii)] {\makebox[5cm]{$xRy,\ yRz \Longrightarrow xRz\ \forall x,y,z $\hfill} (transitive)}
+    \end{itemize}
+\end{defn}
+
+Equivalence relations allow us to introduce the following constructs which will be useful later on:
+\begin{itemize}
+    \item \textbf{Equivalence class} of an element $x$: $E_x= \gr{y\in X \, :\, yRx}$
+    \item \textbf{Quotient set}: $ \nicefrac{X}{R} = \gr{E_x \,:\, x\in X}$
+\end{itemize}
+
+For example, to define $\QQ$ in a precise way we take the following relation $R$
+\begin{equation*}
+    \frac{1}{2} = \frac{2}{4} = \frac{3}{6} = ...
+\end{equation*}
+i.e. the pairs $(1,2),(2,4),(3,6),... \in \ZZ \times \ZZ_0$ (without zero), therefore $\QQ = \nicefrac{\ZZ \times \ZZ_0}{R} $.
+
+% section relations_equivalence_relations (end)
+
+% chapter set_theory (end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

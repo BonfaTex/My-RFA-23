@@ -1,0 +1,144 @@
+\documentclass[10pt,a4paper,twoside]{book}
+
+\input{Style/style}
+
+\input{Style/matlab}
+
+\usepackage[
+	left=2cm, % inner
+	right=2cm, % outer
+	top=2.5cm,
+	bottom=2.5cm,
+	%showframe,
+	]{geometry}
+
+\usepackage{pdfpages}
+\includepdfset{pages=-, offset=0mm 1cm,
+   pagecommand={\thispagestyle{empty}}}
+
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\loc}{loc}
+
+%%%%%%%% PARTE ESERCIZI
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{etoolbox}
+\usepackage{nicefrac, xfrac}
+\newcommand{\Esercizio}[1]{\subsection{Esercizio~#1}}
+\newcommand{\Soluzione}{\subsection{Soluzione}}
+
+\newcommand{\Lezione}{\qquad\hspace*{\fill}\textit}
+\newcommand{\Laboratorio}{\qquad\hspace*{\fill}\textit}
+
+\newcommand{\ParteEsercizi}{\section{Esercizi}}
+\newcommand{\ParteSoluzioni}{\section{Soluzioni}}
+
+\setcounter{secnumdepth}{2} % mi assicuro che gli esercizi siano numerati
+\setcounter{tocdepth}{1} % solo 1 per non avere tutti gli esercizi nel contents
+
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\frontmatter
+
+\pagestyle{empty}
+
+% COPERTINA
+
+\hypertarget{mytitlepage}{} % set the hypertarget
+\bookmark[dest=mytitlepage,level=chapter]{Title Page} % add the bookmark
+
+\vspace*{\fill}
+
+\begin{center}
+
+	\fg{0.5}{images/logo_polimi}
+
+	\vspace*{1.5cm}
+
+	{\large Notes of}\\
+	
+	\vspace*{1.5cm}
+	
+	{\Huge \textsc{Real and Functional Analysis}}\\
+	
+	\vspace*{1.5cm}
+	
+	{\large for the Master in Mathematical Engineering}\\
+	\vspace*{0.3cm}
+	{\large held by Prof. G. Verzini}\\
+	\vspace*{0.3cm}
+	{\large a.a. 2023/2024}\\
+
+	\vspace*{5cm}
+
+	{\large Edited by}\\
+	\vspace*{0.3cm}
+	{\large Teo Bonfa}\\
+
+	\vspace*{1.5cm}
+
+	\fg{0.2}{images/logo_blackCL}
+\end{center}
+\vspace*{\fill}
+\clearpage
+
+% INDICE
+
+\cleardoublepage
+\pagestyle{toc}
+\hypertarget{mytoc}{} % set the hypertarget
+\bookmark[dest=mytoc,level=chapter]{\contentsname} % add the bookmark
+\tableofcontents
+\cleardoublepage
+
+% MAIN MATTER
+
+% \pagestyle{empty}
+\pagestyle{fancy}
+\mainmatter
+
+\part{Introduction}
+\input{teoria/cap0.tex} \cleardoublepage
+\input{teoria/cap1.tex} \cleardoublepage
+
+\part{Real Analysis}
+\input{teoria/cap2.tex} \cleardoublepage
+\input{teoria/cap3.tex} \cleardoublepage
+\input{teoria/cap4.tex} \cleardoublepage
+\input{teoria/cap5.tex} \cleardoublepage
+\input{teoria/cap6.tex} \cleardoublepage
+\input{teoria/cap7.tex} \cleardoublepage
+\input{teoria/cap8.tex} \cleardoublepage
+\input{teoria/cap9.tex} \cleardoublepage
+\input{teoria/cap10.tex} \cleardoublepage
+
+\part{Functional Analysis}
+\input{teoria/cap11.tex} \cleardoublepage
+\input{teoria/cap12.tex} \cleardoublepage
+\input{teoria/cap13.tex} \cleardoublepage
+\input{teoria/cap14.tex} \cleardoublepage
+\input{teoria/cap15.tex} \cleardoublepage
+\input{teoria/cap16.tex} \cleardoublepage
+\input{teoria/cap17.tex} \cleardoublepage
+\input{teoria/cap18.tex} \cleardoublepage
+
+\part{Esercitazioni}
+% \setcounter{chapter}{0}
+\numberwithin{equation}{chapter}
+\input{esercitazioni/eser1} \cleardoublepage
+\input{esercitazioni/eser2} \cleardoublepage
+\input{esercitazioni/eser3} \cleardoublepage
+\input{esercitazioni/eser4} \cleardoublepage
+\input{esercitazioni/eser5} \cleardoublepage
+\input{esercitazioni/eser6} \cleardoublepage
+\input{esercitazioni/eser7} \cleardoublepage
+\input{esercitazioni/eser8} \cleardoublepage
+\input{esercitazioni/eser9} \cleardoublepage
+\input{esercitazioni/eser10} \cleardoublepage
+
+\end{document}
