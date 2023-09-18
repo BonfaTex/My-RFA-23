@@ -4,8 +4,6 @@ Notes of Real and Functional Analysis for the Master in Mathematical Engineering
 
 ## Licenza
 
-Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-
 Questa opera è rilasciata sotto licenza [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 In sintesi: potete condividere i contenuti del libro, in tutto o in parte, e apportare le vostre modifiche, a patto di citare la fonte, di condividere le modifiche con la stessa licenza, e di non usare il materiale per scopi commerciali (non è permesso stampare il libro per rivenderlo).
