@@ -28,11 +28,156 @@ Given $f,g\in\Cc^0\td{[a,b]}$, i.e. $f,g:[a,b]\to\RR$ continuous, the distance
     d(f,g):=\min_{x\in[a,b]} \abs{f(x)-g(x)}
 \end{equation*}
 
-cannot be a proper distance because $d=0 \notimplies f=g$ (see the definition of distance in the next page).
+cannot be a proper distance because $d=0 \notimplies f=g$ (see the definition of distance below).
 
 \fg{0.4}{screen1809}
 
 % section recall_on_rr^n_c_ (end)
+
+\newpage
+
+\section{Recall on metric spaces} % (fold)
+\label{sec:recall_on_metric_spaces}
+
+Let $X$ be a nonempty set (no need of any algebraic structure such as vector spaces).
+
+\begin{defn}
+A function $d:X\times X\to[0,+\infty)$ is said to be a \textbf{metric/distance} on $X$ if all the followings are satisfied:
+\begin{enumerate}[(a)]
+    \item {\makebox[6cm]{$d(x,y)\geq 0$ and $d(x,y)=0$ iff $x=y$\hfill}}
+    \item {\makebox[6cm]{$d(x,y)=d(y,x)$\hfill} (symmetry)}
+    \item {\makebox[6cm]{$d(x,y)\leq d(x,z)+d(z,y)$\hfill} (\textbf{triangular inequality})}
+\end{enumerate}
+$\forall x,y,z\in X$. If $d$ is a distance on $X$, then $(X,d)$ is called \textbf{metric space}.
+\end{defn}
+
+Examples:
+\begin{enumerate}
+    \item $\left( \RR^n,d_E \right)$ is a metric space
+
+    \begin{home}
+    Prove it.
+
+    \underline{Hint}: in order to prove the tr. inequality use the \textbf{Cauchy-Schwarz inequality}
+    \begin{equation*}
+        \abs{\sum^{n}_{i=1}a_ib_i}\leq\sqrt{\sum^{n}_{i=1}\abs{a_i}^2 } \cdot \sqrt{\sum^{n}_{i=1}\abs{b_i}^2 }
+    \end{equation*}
+    \newline
+    \newline
+    \end{home}
+
+    \item in $\RR^n$ ($n\geq 2$) we can also define
+    \begin{equation*}
+    {\renewcommand*{\arraystretch}{1.5}
+    \begin{array}{ll}
+    d_1(x,y)=\sum^{n}_{i=1}\abs{x_i-y_i} &\quad\textbf{Manhattan distance} \\
+    d_\infty(x,y)=\max_{i=1,...,n} \abs{x_i-y_i} &\quad\textbf{uniform/maximum distance} 
+    \end{array}}
+    \end{equation*}
+
+    \begin{home}
+    Prove that both $d_1$ and $d_\infty$ are distances on $\RR^n$.
+
+    \underline{Hint}: use that for $a,b\in\RR$, $d(a,b):=|a-b|$ is a distance on $\RR$ and so $|a-b|\leq|a-c|+|c-b|$ $\forall a,b,c\in\RR$
+    \newline
+    \newline
+    \end{home}
+
+    \item for $p>1$ (but also for $0<p<1$)
+    \begin{equation*}
+        d_p(x,y)=\left(\sum^{n}_{i=1} \abs{x_i-y_i}^p  \right)^{\nicefrac{1}{p}}
+    \end{equation*}
+
+    is a metric on $\RR^n$ ($p=2\leadsto d_E$)
+
+    \item let $X$ be a nonempty set. Can we also define a distance on $X$? Yes, with the \textbf{discrete distance}
+    \begin{equation*}
+        d(x,y)=\begin{cases}
+            0 &\text{ if }x=y\\
+            1 &\text{ if }x\neq y            
+        \end{cases}
+    \end{equation*}
+
+    \begin{home}
+    Prove that is a metric on $X$.
+    \newline
+    \newline
+    \newline
+    \end{home}
+\end{enumerate}
+
+\newpage
+
+\begin{defn}
+Given $(X,d)$ metric space, $x_0\in X$, $r>0$,
+\begin{equation*}
+    B_r(x_0)=B_d(x_0,r):=\left\{ x\in X\,:\,d(x,x_0)<r \right\}
+\end{equation*}
+is a \textbf{open ball} of center $x_0$ and radius $r$, or a open spherical neighborhood of $x_0$.
+\end{defn}
+
+Balls can have different shapes. For examples, let be $X=\RR^n$ ($n=2$ for drawing purposes):
+\begin{enumerate}[(a)]
+    \item with $d_E$ we have that $B_{d_E}(x_0,r)$ is the open disk of center $x_0$ and radius $r$
+    \item with $d_1$ we have
+    \begin{align*}
+        B_{d_1}(0,r)&=\left\{ (x,y)\in\RR^2\,:\,d_1\left( (x,y),(0,0) \right)<r \right\} \\
+        &=\left\{ (x,y)\in\RR^2\,:\,|x|+|y|<r \right\}
+    \end{align*}
+    \item with $d_\infty$ we have
+    \begin{align*}
+        B_{d_\infty}(0,r)&=\left\{ (x,y)\in\RR^2\,:\,d_\infty\left( (x,y),(0,0) \right)<r \right\} \\
+        &=\left\{ (x,y)\in\RR^2\,:\,\max\{|x|+|y|\}<r \right\}
+    \end{align*}
+    \begin{figure}[H]
+    \centering
+    \subfloat[][\emph{Ball in }$\left( \RR^n, d_E\right)$]
+    {\includegraphics[width=.30\textwidth]{fig191}} \quad
+    \subfloat[][\emph{Ball in }$\left( \RR^n, d_1\right)$]
+    {\includegraphics[width=.30\textwidth]{fig192}} \quad
+    \subfloat[][\emph{Ball in }$\left( \RR^n, d_\infty\right)$]
+    {\includegraphics[width=.30\textwidth]{fig193}}
+    %\caption*{Funzionamento del quicksort}
+    %\label{fig:subfig}
+\end{figure}
+\end{enumerate}
+
+It is remarkable that these balls are equivalent (we will explain it better in due time). 
+\fg{0.4}{fig194}
+
+\newpage
+
+If you generalize to every $p$, you could say that
+\fg{0.6}{fig195}
+
+Furthermore, with $(X,d)$ where $d$ is the discrete metric, we have
+\begin{equation*}
+B_d(x_0,r)=\begin{cases}
+    \gr{x_0}, &\text{ if }r\leq 1 \\
+    X,&\text{ if }r>1    
+\end{cases}
+\end{equation*}
+
+Therefore, many possible distances can be introduced on a set. In some cases they lead to the same \emph{structure} but not in genersal. For example, on $X=\Cc^0\left( [a,b] \right)$, $f,g\in X$, we have:
+\begin{itemize}
+    \item discrete distance (we've got it folks)
+    \item $\displaystyle d_1(f,g):=\int_a^b\left| f(x)-g(x) \right|\dx$
+    \item $\displaystyle d_\infty(f,g):=\max_{x\in[a,b]}\left| f(x)-g(x) \right|$
+\end{itemize}
+
+They are both distances on $\Cc^0\left( [a,b] \right)$ but they lead to different structures:
+\fg{0.8}{fig196}
+
+% section recall_on_metric_spaces (end)
+
+\newpage
+
+\section{Topology in metric spaces} % (fold)
+\label{sec:topology_in_metric_spaces}
+
+
+
+% section topology_in_metric_spaces (end)
 
 
 
