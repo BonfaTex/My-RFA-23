@@ -175,15 +175,151 @@ They are both distances on $\Cc^0\left( [a,b] \right)$ but they lead to differen
 \section{Topology in metric spaces} % (fold)
 \label{sec:topology_in_metric_spaces}
 
+\begin{defn}
+Let $(X,d)$ be a metric space and let $A\subset X$. For $x_0\in X$, we say that $x_0$ is:
+\begin{enumerate}[(i)]
+    \item an \textbf{interior point} of $A$ if
+    \begin{equation*}
+    \exists r>0\quad\text{s.t.}\quad B(x_0,r)\subset A
+    \end{equation*}
 
+    \item an \textbf{exterior point} of $A$ if
+    \begin{equation*}
+    \exists r>0\quad\text{s.t.}\quad B(x_0,r)\subset A^c:=X\setminus A
+    \end{equation*}
+
+    \item a \textbf{boundary point} of $A$ if it is neither interior nor exterior, i.e.
+    \begin{equation*}
+    B(x_0,r)\cap A\neq\varnothing\quad\text{and}\quad B(x_0,r)\cap A^c\neq\varnothing\quad\forall r>0
+    \end{equation*}
+
+    \item an \textbf{adherence point} of $A$ if it is either interior or boundary, i.e.
+    \begin{equation*}
+    B(x_0,r)\cap A\neq\varnothing\quad\forall r>0
+    \end{equation*}
+
+    \item an \textbf{accumulation point} of $A$ if
+    \begin{equation*}
+    \left( B(x_0,r)\cap A \right)\setminus \gr{x_0}\neq 0
+    \end{equation*}
+
+    \item an \textbf{isolated point} of $A$ if
+    \begin{equation*}
+    x_0\in A\quad\text{and}\quad \exists r>0\quad\text{s.t.}\quad B(x_0,r)\cap A=\gr{x_0}
+    \end{equation*}
+
+    \begin{marker}
+    By definition, an isolated point cannot be an accumulation point.
+    \end{marker}
+\end{enumerate}
+
+We also define:
+\begin{equation*}
+\left.
+{\renewcommand*{\arraystretch}{1.5}
+\begin{array}{ll}
+\overset{o}{A}:=\left\{ x_o\in X\,:\, x_0\text{ is an interior point of }A \right\} &\textbf{interior}\text{ of }A \\
+ext(A):=\left\{ x_o\in X\,:\, x_0\text{ is an exterior point of }A \right\} &\textbf{exterior}\text{ of }A \\
+\partial A:=\left\{ x_o\in X\,:\, x_0\text{ is a boundary point of }A \right\} &\textbf{boundary}\text{ of }A \\
+\overline{A}:=\left\{ x_o\in X\,:\, x_0\text{ is an adherence point of }A \right\} &\textbf{closure}\text{ of }A
+\end{array}}
+\right.
+\end{equation*}
+\begin{marker}
+The definitions (i)-(ii)-(iii) are mutual disjoint, thus $\overset{o}{A},ext(A),\partial A$ are pairwise disjoint sets (see the property below).
+\end{marker}
+\end{defn}
+
+\begin{defn}
+A set $A\subset X$  is \textbf{open} if $A=\overset{o}{A}$. Similarly, $A$ is \textbf{closed} if $A^c$ is open.
+\end{defn}
+
+Let's take a look at some basic properties:
+\begin{itemize}
+    \item $\overset{o}{A},ext(A),\partial A$ form a partition of $X$
+    \item $A$ open iff $A\cap\partial A=\varnothing$
+    \item $\overline{A}=\overset{o}{A}\cup\partial A = A\cup\partial A$
+    \item $A$ closed iff $A\equiv \overline{A}$
+    \item $\overset{o}{A}$ is the largest (w.r.t. the inclusion order) open subset of $A$
+    \item $\overline{A}$ is the smallest closed subset of $X$ containing $A$
+    \item Let $I$ be a family of indexes (may be uncountable) and $A_i$ be an open set $\forall i\in I$. Then $\displaystyle\bigcup_{i\in I} A_i$ is open.
+    \item Let $A_1,...,A_m$ for $m\in\NN$ be a finite number of open sets. Then $\displaystyle\bigcap_{i=1}^m A_i$ is open.
+    \begin{home}
+    Prove these last two properties.
+    \end{home}
+    \item Let $I$ be a family of indexes (may be uncountable) and $C_i$ be closed $\forall i\in I$. Then $\displaystyle\bigcap_{i\in I} C_i$ is closed.
+    \item Let $C_1,...,C_m$ for $m\in\NN$ be closed. Then $\displaystyle\bigcup_{i=1}^m A_i$ is closed.
+    \begin{subtle}
+    These last two properties are deduced from the Morgan's laws.
+    \end{subtle}
+\end{itemize}
 
 % section topology_in_metric_spaces (end)
 
+\section{Limits for sequences} % (fold)
+\label{sec:limits_for_sequences}
 
+Let $(X,d)$ metric space, $\left\{ x_n \right\}_{n\in\NN}\subset X$ sequence, $x^*\in X$ point.
 
+\begin{defn}
+We say that $x_n\overset{d}\longrightarrow x^*$ as $n\to+\infty$ if
+\begin{equation*}
+\underbracket[0.2pt]{d(x_n,x^*)\to0}_{\text{limit in real numbers}}\text{ as }n\to+\infty
+\end{equation*}
+i.e.
+\begin{equation*}
+\forall\Ec>0\quad\exists \overline{n}=\overline{n}(\Ec)\in\NN\quad\text{s.t.}\quad \underbracket[0.2pt]{d(x_n,x^*)<\Ec}_{\text{or }x_n\in B_d(x^*,\Ec)}\quad \forall n>\overline{n}
+\end{equation*}
+\end{defn}
 
+\begin{prp}
+The limit (it it exists) is unique \underline{in metric space}.
+\end{prp}
 
+\begin{home}
+Prove it.
 
+\underline{Hint}: assuming by contraddiction that exist $x^*,y^*,x^*\neqy^*$ and then verify the triangular inequality.
+\newline
+\newline
+\newline
+\newline
+\end{home}
 
+\begin{prp}
+If $\left\{ x_n \right\}_{n}$ converges to $x^*$, then any subsequence of $\left\{ x_n \right\}_{n}$ converges and it converges to $x^*$.
+\end{prp}
+
+\begin{defn}
+A set $A\subset X$ is \textbf{sequentially closed} if for any converging sequence $\left\{ x_n \right\}_{n}\subset A$ its limit $x^*$ belongs to $A$.
+\end{defn}
+
+\begin{prp}
+$A\subset X$ closed iff $A$ is sequentially closed.
+\end{prp}
+
+\begin{home}
+Prove it.
+
+\underline{Hint}: for ($\Rightarrow$) use the def. of closed, for ($\Leftarrow$) prove that $A=\overline{A}$ (i.e. $A\subset\overline{A}$ and $\overline{A}\subset A$).
+\newline
+\newline
+\newline
+\newline
+\end{home}
+
+% section limits_for_sequences (end)
+
+\newpage
+
+\section{Closure, Boundedness, Compactness} % (fold)
+\label{sec:closure_boundedness_compactness}
+
+% section closure_boundedness_compactness (end)
+
+\section{Continuous functions in metric spaces} % (fold)
+\label{sec:continuous_functions_in_metric_spaces}
+
+% section continuous_functions_in_metric_spaces (end)
 
 % chapter exercise_session_18_09 (end)
