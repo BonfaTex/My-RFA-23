@@ -64,6 +64,8 @@ Examples:
     \end{equation*}
     \newline
     \newline
+    \newline
+    (a partial solution is in the Cavagnari's slides \texttt{2023-09-18.pdf} on Webeep)
     \end{home}
 
     \item in $\RR^n$ ($n\geq 2$) we can also define
@@ -79,6 +81,7 @@ Examples:
     Prove that both $d_1$ and $d_\infty$ are distances on $\RR^n$.
 
     \underline{Hint}: use that for $a,b\in\RR$, $d(a,b):=|a-b|$ is a distance on $\RR$ and so $|a-b|\leq|a-c|+|c-b|$ $\forall a,b,c\in\RR$
+    \newline
     \newline
     \newline
     \end{home}
@@ -105,8 +108,6 @@ Examples:
     \newline
     \end{home}
 \end{enumerate}
-
-\newpage
 
 \begin{defn}
 Given $(X,d)$ metric space, $x_0\in X$, $r>0$,
@@ -284,6 +285,9 @@ Prove it.
 \newline
 \newline
 \newline
+\newline
+\newline
+(a sketch is in the Cavagnari's slides \texttt{2023-09-18.pdf} on Webeep)
 \end{home}
 
 \begin{prp}
@@ -306,6 +310,9 @@ Prove it.
 \newline
 \newline
 \newline
+\newline
+\newline
+(a solution is in the Cavagnari's slides \texttt{2023-09-18.pdf} on Webeep)
 \end{home}
 
 % section limits_for_sequences (end)
@@ -315,11 +322,151 @@ Prove it.
 \section{Closure, Boundedness, Compactness} % (fold)
 \label{sec:closure_boundedness_compactness}
 
+Let $(X,d)$ metric space and $E\subset X$ set.
+
+\begin{defn}
+The \textbf{diameter} of $E$ is
+\begin{equation*}
+\text{diam}(E):=\sup_{x,y\in E} d(x,y)\quad\in[0,+\infty]
+\end{equation*}
+\end{defn}
+
+\begin{defn}
+$E$ is \textbf{bounded} if its diameter is finite: $\text{diam}(E)<+\infty$, or equivalently if $\exists R>0$ and $x\in X$ s.t. $E\subset B(x,R)$.
+\end{defn}
+
+\begin{defn}
+$\left\{ E_i \right\}_{i\in I}\subset\Pc(X)$ is a \textbf{cover/covering} of $E$ if 
+\begin{equation*}
+E\subset\bigcup_{i=I} E_i
+\end{equation*}
+
+A subfamily of $\left\{ E_i \right\}$ which is still a covering for $E$ is called \textbf{subcover/subcovering} of $\left\{ E_i \right\}_{i\in I}$.
+\end{defn}
+
+\begin{defn}
+$E$ is \textbf{compact} if for any open cover $\left\{ E_i \right\}_{i\in I}$ (i.e. all $E_i$ are open sets) of $E$ there exists a finite subcover (i.e. a finite subset of indexes $J\subset I$ s.t. $E\subset\bigcup_{i\in J}E_i$).
+\end{defn}
+
+For example, $E\subset(\RR,d_E)$, $E=(0,1)$ is not compact, indeed if you take $E_n=\left( \nicefrac{1}{n},1 \right)$ then $\left\{ E_n \right\}_{n\in \NN}$ is an open cover for $E$ but it doesn't admit any finite subcover.
+
+\begin{marker}
+Let's consider $(X,d)$ with $d$ the discrete metric. We notice that any subset of $X$ is an open set, hence only finite sets (made of a limite number of elements) are compact.
+\end{marker}
+
+\begin{thm}
+Let $(X,d)$ be a metric space and $E\subset X$ be a compact set. Then $S\subset E$ closed $\Longrightarrow$ $S$ compact.
+\end{thm}
+
+\begin{home}
+Prove it.
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+(a solution is in the Cavagnari's slides \texttt{2023-09-18.pdf} on Webeep)
+\end{home}
+
+\begin{defn}
+$E$ is \textbf{sequentially compact} if any sequence $\left\{ x_n \right\}_n\subset E$ admits a convergent subsequence whose limit is in $E$.
+\end{defn}
+
+\begin{thm}
+Let $(X,d)$ be a metric space and $E\subset X$ be a set. Then:
+\begin{enumerate}[(i)]
+    \item $E$ is compact $\Longrightarrow$ $E$ closed and bounded
+    \item $E$ compact $\Longleftrightarrow$ $E$ is sequentially compact
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Heine-Borel]
+In $\left( \RR^n,d_E \right)$ (actually any distance), we have $E\subset\RR^n$ compact iff $E$ closed and bounded.
+\end{thm}
+
+Its is remarkable that the $\Longleftarrow$ is not true in general, for example it is false in $\infty$-dim. spaces.
+
 % section closure_boundedness_compactness (end)
+
+\newpage
 
 \section{Continuous functions in metric spaces} % (fold)
 \label{sec:continuous_functions_in_metric_spaces}
 
+Let $\left( X,d_X \right),\left( Y,d_Y \right)$ be metric spaces and $f:X\to Y$ a function (if $X=\NN$ then $f$ is a sequence).
+
+\begin{marker}
+You can have fun proving the followings:
+\begin{equation*}
+\left.
+{\renewcommand*{\arraystretch}{1.5}
+\begin{array}{l}
+f^{-1}\left( A^c \right)=\left( f^{-1}(A) \right)^c \\
+f\left( A_1\cup A_2 \right)=f\left( A_1 \right)\cup f\left( A_2 \right) \\
+f\left( A_1\cap A_2 \right)\subset f\left( A_1 \right)\cap f\left( A_2 \right)
+\end{array}}
+\right.\end{equation*}
+\end{marker}
+
+\begin{defn}
+$y_0\in Y$ is the \textbf{limit} of $f(x)$ as $x\to x_0\in X$ if
+\begin{equation*}
+\forall \Ec>0\quad \exists\delta=\delta(\Ec)>0\quad\text{s.t.}\quad \underbracket[0.2pt]{ \underbracket[0.2pt]{0<}_{x\neq x_0}d_X(x,x_0)<\delta\ \Longrightarrow\ d_Y\left( f(x),y_0 \right)<\Ec }_{\displaystyle\text{i.e. }f\left( B_{d_X}\left(x_0,\delta\right)\setminus\left\{ x_0 \right\} \right)\subset B_{d_Y}\left( y_0,\Ec \right)}
+\end{equation*}
+Then we write $\displaystyle\lim_{x\to x_0}f(x)=y_0$.
+\end{defn}
+
+As for sequences, the limit (if exists) is unique.
+
+\begin{defn}
+\leavevmode
+\begin{enumerate}
+    \item $f$ is \textbf{continuous} at $x_0\in X$ if
+    \begin{enumerate}[(i)]
+        \item $x_0$ is an isolated point
+
+        or
+
+        \item $x_0$ is an accumulation point for $X$ and $f(x_0)=\displaystyle\lim_{x\to x_0} f(x)$
+    \end{enumerate}
+
+    \item $f$ is \textbf{sequentially continuous} at $x_0\in X$ if for any sequence $\left\{ x_n \right\}_n\subset X$ s.t. $x_n\overset{d_X}\longrightarrow x_0$, we have that
+    \begin{equation*}
+    \underbracket[0.2pt]{f\left( x_n \right)\overset{d_Y}\longrightarrow f\left( x_0 \right)\quad\text{as }n\to+\infty}_{\displaystyle\text{i.e. }f\left( x_0 \right)=\lim_{n\to+\infty}f(x_n)\ \text{ i.e. }d_Y\left( f\left( x_n\right),f\left( x_0 \right) \right)\to 0\text{ as }n\to+\infty}
+    \end{equation*}
+\end{enumerate}
+\end{defn}
+
+\begin{thm}
+Let $f:\left( X,d_X \right)\to\left( Y,d_Y \right)$ be a function. Then, $f$ is continuous at $x_0\in X$ iff $f$ is sequentially continuous at $x_0$.
+\end{thm}
+
 % section continuous_functions_in_metric_spaces (end)
 
 % chapter exercise_session_18_09 (end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
