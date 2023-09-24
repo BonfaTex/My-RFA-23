@@ -235,33 +235,94 @@
 \newcommand{\YY}{\mathbb{Y}}
 \newcommand{\ZZ}{\mathbb{Z}}
 
-% Calligraphic
-\newcommand{\Ac}{\mathcal{A}}
-\newcommand{\Bc}{\mathcal{B}}
-\newcommand{\Cc}{\mathcal{C}}
-\newcommand{\Dc}{\mathcal{D}}
-\newcommand{\Ec}{\mathcal{E}}
-\newcommand{\Fc}{\mathcal{F}}
-\newcommand{\Gc}{\mathcal{G}}
-\newcommand{\Hc}{\mathcal{H}}
-\newcommand{\Ic}{\mathcal{I}}
-\newcommand{\Jc}{\mathcal{J}}
-\newcommand{\Kc}{\mathcal{K}}
-\newcommand{\Lc}{\mathcal{L}}
-\newcommand{\Mc}{\mathcal{M}}
-\newcommand{\Nc}{\mathcal{N}}
-\newcommand{\Oc}{\mathcal{O}}
-\newcommand{\Pc}{\mathcal{P}}
-\newcommand{\Qc}{\mathcal{Q}}
-\newcommand{\Rc}{\mathcal{R}}
-\newcommand{\Sc}{\mathcal{S}}
-\newcommand{\Tc}{\mathcal{T}}
-\newcommand{\Uc}{\mathcal{U}}
-\newcommand{\Vc}{\mathcal{V}}
-\newcommand{\Wc}{\mathcal{W}}
-\newcommand{\Xc}{\mathcal{X}}
-\newcommand{\Yc}{\mathcal{Y}}
-\newcommand{\Zc}{\mathcal{Z}}
+% Calligraphic 
+\usepackage{euscript} % accedi a Euler usando \EuScript{}
+\usepackage[cal=dutchcal,calscaled=.97]{mathalfa} % default calligraphic font, accedi con \mathcal{}
+\DeclareMathAlphabet{\modern}{OMS}{zplm}{m}{n} % accedi al calligrafico predefinito (computer modern roman) usando \modern{}
+
+% Calligrafico predefinito (Computer Modern Roman)
+\newcommand{\Ac}{\modern{A}}
+\newcommand{\Bc}{\modern{B}}
+\newcommand{\Cc}{\modern{C}} % for C^0 
+\newcommand{\Dc}{\modern{D}}
+\newcommand{\Ec}{\modern{E}} % for epsilon in the proofs
+\newcommand{\Fc}{\modern{F}}
+\newcommand{\Gc}{\modern{G}}
+\newcommand{\Hc}{\modern{H}}
+\newcommand{\Ic}{\modern{I}}
+\newcommand{\Jc}{\modern{J}}
+\newcommand{\Kc}{\modern{K}}
+\newcommand{\Lc}{\modern{L}}
+\newcommand{\Mc}{\modern{M}}
+\newcommand{\Nc}{\modern{N}}
+\newcommand{\Oc}{\modern{O}}
+\newcommand{\Pc}{\modern{P}}
+\newcommand{\Qc}{\modern{Q}}
+\newcommand{\Rc}{\modern{R}}
+\newcommand{\Sc}{\modern{S}}
+\newcommand{\Tc}{\modern{T}}
+\newcommand{\Uc}{\modern{U}}
+\newcommand{\Vc}{\modern{V}}
+\newcommand{\Wc}{\modern{W}}
+\newcommand{\Xc}{\modern{X}}
+\newcommand{\Yc}{\modern{Y}}
+\newcommand{\Zc}{\modern{Z}}
+
+% Calligrafico EUler
+\newcommand{\Aeu}{\EuScript{A}}
+\newcommand{\Beu}{\EuScript{B}}
+\newcommand{\Ceu}{\EuScript{C}}
+\newcommand{\Deu}{\EuScript{D}}
+\newcommand{\Eeu}{\EuScript{E}}
+\newcommand{\Feu}{\EuScript{F}}
+\newcommand{\Geu}{\EuScript{G}}
+\newcommand{\Heu}{\EuScript{H}}
+\newcommand{\Ieu}{\EuScript{I}}
+\newcommand{\Jeu}{\EuScript{J}}
+\newcommand{\Keu}{\EuScript{K}}
+\newcommand{\Leu}{\EuScript{L}}
+\newcommand{\Meu}{\EuScript{M}}
+\newcommand{\Neu}{\EuScript{N}}
+\newcommand{\Oeu}{\EuScript{O}}
+\newcommand{\Peu}{\EuScript{P}} % for the power set
+\newcommand{\Qeu}{\EuScript{Q}}
+\newcommand{\Reu}{\EuScript{R}}
+\newcommand{\Seu}{\EuScript{S}}
+\newcommand{\Teu}{\EuScript{T}} % for topological stuff
+\newcommand{\Ueu}{\EuScript{U}}
+\newcommand{\Veu}{\EuScript{V}}
+\newcommand{\Weu}{\EuScript{W}}
+\newcommand{\Xeu}{\EuScript{X}}
+\newcommand{\Yeu}{\EuScript{Y}}
+\newcommand{\Zeu}{\EuScript{Z}}
+
+% Calligrafico dutchcal
+\newcommand{\Adu}{\mathcal{A}}
+\newcommand{\Bdu}{\mathcal{B}} % for Borel stuff
+\newcommand{\Cdu}{\mathcal{C}}
+\newcommand{\Ddu}{\mathcal{D}}
+\newcommand{\Edu}{\mathcal{E}}
+\newcommand{\Fdu}{\mathcal{F}}
+\newcommand{\Gdu}{\mathcal{G}}
+\newcommand{\Hdu}{\mathcal{H}}
+\newcommand{\Idu}{\mathcal{I}}
+\newcommand{\Jdu}{\mathcal{J}}
+\newcommand{\Kdu}{\mathcal{K}}
+\newcommand{\Ldu}{\mathcal{L}}
+\newcommand{\Mdu}{\mathcal{M}} % for sigma-algebras
+\newcommand{\Ndu}{\mathcal{N}}
+\newcommand{\Odu}{\mathcal{O}}
+\newcommand{\Pdu}{\mathcal{P}}
+\newcommand{\Qdu}{\mathcal{Q}}
+\newcommand{\Rdu}{\mathcal{R}}
+\newcommand{\Sdu}{\mathcal{S}}
+\newcommand{\Tdu}{\mathcal{T}}
+\newcommand{\Udu}{\mathcal{U}}
+\newcommand{\Vdu}{\mathcal{V}}
+\newcommand{\Wdu}{\mathcal{W}}
+\newcommand{\Xdu}{\mathcal{X}}
+\newcommand{\Ydu}{\mathcal{Y}}
+\newcommand{\Zdu}{\mathcal{Z}}
 
 % Bold Big Vector
 \newcommand{\Av}{\mathbf{A}}

@@ -63,21 +63,21 @@ Let $X$ be a set.
 \begin{defn}[Power set]$\\$
 The power set of $X$, i.e. the set of all subsets of $X$, is
 \begin{equation*}
-    \Pc(X)=\gr{Y\,:\,Y\subset X}
+    \Peu(X)=\gr{Y\,:\,Y\subset X}
 \end{equation*}
 It is sometimes denoted as $2^X$.
 \end{defn}
 
-The power set has cardinality strictly bigger than $X$. For example, $\Pc(\NN)$ has the cardinality of continuoum.
+The power set has cardinality strictly bigger than $X$. For example, $\Peu(\NN)$ has the cardinality of continuoum.
 
 \begin{defn}[Family of subsets]$\\$
-A family, or collection, of subsets of $X$ is just $\Cc\subset\Pc(X)$. Tipically, a family of subsets (induced by $I\subset\RR$ set of indexes) is $\Cc=\gr{E_i}_{i\in I}$ where $E_i\subset X$ $\forall i\in I$.
+A family, or collection, of subsets of $X$ is just $\Ceu\subset\Peu(X)$. Tipically, a family of subsets (induced by $I\subset\RR$ set of indexes) is $\Ceu=\gr{E_i}_{i\in I}$ where $E_i\subset X$ $\forall i\in I$.
 \end{defn}
 
 For example, $\left\{E_1,E_2,E_3\right\}$ is a family of subsets.
 
 \begin{defn}[Union and intersection]$\\$
-Given a family of sets $\left\lbrace E_i \right\rbrace_{i \in I} \subset \mathcal{P}(X)$, will often be considered
+Given a family of sets $\left\lbrace E_i \right\rbrace_{i \in I} \subset \Peu(X)$, will often be considered
 \begin{align*}
 \bigcup_{i \in I} E_i &= \gr{x \in X\,:\, \exists i \in I \text{ s.t. } x \in E_i} \\ 
 \bigcap_{i \in I} E_i &= \gr{x \in X\,:\,x \in E_i\ \forall i \in I}  
@@ -87,12 +87,12 @@ $\gr{E_i}$ is said to be (pairwise) disjoint if $E_i \cap E_j = \emptyset$ $\for
 \end{defn}
 
 \begin{exa}[Standard topology of \texorpdfstring{$\RR$}{C}]$\\$
-Given $X=\RR$ $\td{\text{or }\RR^N}$, the standard/euclidian topology of $\RR$ $\td{\text{or }\RR^N}$ is $\Tc=\gr{E\subset X\,:\,E\text{ is open}}$, i.e. it is the family of all open subsets of $X$. \\
+Given $X=\RR$ $\td{\text{or }\RR^N}$, the standard/euclidian topology of $\RR$ $\td{\text{or }\RR^N}$ is $\Teu=\gr{E\subset X\,:\,E\text{ is open}}$, i.e. it is the family of all open subsets of $X$. \\
 More generally, this can be defined in metric spaces $\td{X,d}$ where $X$ is a set and $d$ a distance between $x,y\in X$.
 
-Some properties of $\Tc$:
+Some properties of $\Teu$:
 \begin{itemize}
-    \item $\varnothing,X\in\Tc$
+    \item $\varnothing,X\in\Teu$
     \item finite intersection of open sets is open [$\circledast$]
     \item any (finite/infinite, countable/uncountable, ...) union of open sets is open [$\circledcirc$]
 \end{itemize}
@@ -132,7 +132,7 @@ Similarly, $E_n=\displaystyle\qu{a+\frac{1}{n},b-\frac{1}{n}}$, a<b, is increasi
 is called "F$\sigma$-set": a countable union of closed sets (doesn't disagree with $\circledcirc$).
 
 \begin{defn}[lim sup and lim inf]$\\$
-Let $\gr{E_n}_{n\in\NN}\subset\Pc$. We define
+Let $\gr{E_n}_{n\in\NN}\subset\Peu$. We define
 \begin{equation*}
     \limsup_{n} E_n := \bigcap_{n = 1}^{\infty} \left(\bigcup_{k = n}^{\infty} E_k\right)
     \qquad
