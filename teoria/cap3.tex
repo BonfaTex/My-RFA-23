@@ -1,4 +1,57 @@
 %!TEX root = ../main.tex
 
-\chapter{}
+\chapter{Lebesgue measure} % (fold)
+\label{cha:lebesgue_measure}
 \thispagestyle{empty}
+
+\section{Towards the Lebesgue measure} % (fold)
+\label{sec:towards_the_lebesgue_measure}
+
+% section towards_the_lebesgue_measure (end)
+
+\section{Outer measures} % (fold)
+\label{sec:outer_measures}
+
+[...]
+
+The most common way to obtain outer measures is to start with a family $\Eeu$ of \emph{elementary sets} on which a notion of measure is defined (e.g. intervals and their lengths, or rectangles and their areas in the plane) and then to approximate arbitrary sets "from the outside" by countable unions of members of $\Eeu$. The precise construction is as follows.
+
+\begin{proposition}$\\$
+Let $\Eeu\subset\Peu(X)$ and $f:\Eeu\to[0,\infty]$ be such that $\varnothing,X\subset\Eeu$ and $f(\varnothing)=0$. For any $E\subset X$, define
+\begin{equation}
+\label{outer_inf}
+\mu^*(E)=\inf\left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\Eeu\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
+\end{equation}
+(i.e. $\left\{ A_n\right\}_n$ is a covering of $E$). Then $\mu^*$ is an outer measure on $X$.
+\end{proposition}
+
+Few initial comments:
+\begin{itemize}
+    \item As we said before, you can think of $\Eeu$ as $\{(a,b)\}$ and of $f$ as $b-a$.
+
+    \item $\mu^*(E)$ could be greater than the measure we want because $A_n$ are not necessarily disjoint: they can overlap each other. However, we're taking the infimum so it's a good compromise.
+
+    \item Speaking of the inf, we know that it's well defined for nonempty sets. In this case, the set
+    \begin{equation*}
+    \left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\Eeu\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
+    \end{equation*}
+    cannot be empty (cause $\{X,\varnothing,\varnothing,...\}$ is a covering of $E$ \textbf{sure?!}) thus the inf is well defined.
+\end{itemize}
+
+\begin{proof}
+ok
+\end{proof}
+
+% section outer_measures (end)
+
+\section{Carathéodory's theorem} % (fold)
+\label{sec:carathéodory_s_theorem}
+
+% section carathéodory_s_theorem (end)
+
+\section{Finally, the Lebesgue measure} % (fold)
+\label{sec:finally_the_lebesgue_measure}
+
+% section finally_the_lebesgue_measure (end)
+
+% chapter lebesgue_measure (end)

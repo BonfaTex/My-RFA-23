@@ -490,19 +490,20 @@
 \numberwithin{dummyNOT}{chapter}
 
 \theoremstyle{blacknumbox}
-\newtheorem{theoremT}[dummy]{Th}
-\newtheorem{corollaryT}[dummy]{Cor}
+\newtheorem{theoremT}[dummy]{Theorem}
+\newtheorem{corollaryT}[dummy]{Corollary}
 \newtheorem{lemmaT}[dummy]{Lemma}
+\newtheorem{propositionT}[dummy]{Proposition}
 
 % Per gli unnumbered tolgo il \nobreakspace subito dopo {\small\thmname{#1} perché altrimenti c'è uno spazio tra Teorema e il ".", lo spazio lo voglio solo se sono numerati per distanziare Teorema e "(2.1)"
 \theoremstyle{unnumbered}
 \newtheorem*{remarkT}{Remark}
-\newtheorem*{exampleT}{Ex}
-\newtheorem*{propertyT}{Prop}
+\newtheorem*{exampleT}{Example}
+\newtheorem*{propertyT}{Property}
 \newtheorem*{homeworkT}{Homework}
 \newtheorem*{hintT}{Subtleties}
-\newtheorem*{definitionT}{Def}
-\newtheorem*{exerciseT}{Exer}
+\newtheorem*{definitionT}{Definition}
+\newtheorem*{exerciseT}{Exercise}
 
 \theoremstyle{demo}
 \newtheorem*{proofT}{Proof}
@@ -648,6 +649,7 @@ rightmargin=0cm,
 linewidth=1pt,
 innerbottommargin=5pt]{tBox}
 
+% gold box
 \definecolor{satinsheengold}{rgb}{0.8, 0.63, 0.21}
 \newmdenv[skipabove=7pt,
 skipbelow=4pt,
@@ -664,6 +666,24 @@ leftmargin=0cm,
 rightmargin=0cm,
 linewidth=1pt,
 innerbottommargin=5pt]{sBox}
+
+% atomic tangerine box
+\definecolor{atomictangerine}{rgb}{1.0, 0.6, 0.4}
+\newmdenv[skipabove=7pt,
+skipbelow=4pt,
+rightline=true,
+leftline=true,
+topline=true,
+bottomline=true,
+linecolor=atomictangerine,
+backgroundcolor=atomictangerine!0,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=1pt,
+innerbottommargin=5pt]{atBox}
 
 % dim box
 \newmdenv[skipabove=7pt,
@@ -686,6 +706,7 @@ innerbottommargin=5pt]{blackBox}
 \newenvironment{thm}{\begin{gBox}\begin{theoremT}}{\end{theoremT}\end{gBox}}
 \newenvironment{coro}{\begin{oBox}\begin{corollaryT}}{\end{corollaryT}\end{oBox}}
 \newenvironment{lemma}{\begin{lBox}\begin{lemmaT}}{\end{lemmaT}\end{lBox}}
+\newenvironment{proposition}{\begin{atBox}\begin{propositionT}}{\end{propositionT}\end{atBox}}
 \newenvironment{rem}{\begin{oBox}\begin{remarkT}}{\end{remarkT}\end{oBox}}
 \newenvironment{exa}{\begin{sBox}\begin{exampleT}}{\end{exampleT}\end{sBox}}
 \newenvironment{es}{\begin{pBox}\begin{exerciseT}}{\end{exerciseT}\end{pBox}}
