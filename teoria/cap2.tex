@@ -194,8 +194,205 @@ Some examples:
 
 % section measures (end)
 
+\section{Properties of measures} % (fold)
+\label{sec:properties-of-measures}
+
+Our measure space will be $(X,\Mdu,\mu)$ unless otherwise stated.
+\begin{thm}[Basic properties]$\\$
+    \begin{itemize}
+        \item[i)] $\mu \bigl( E \bigr) < + \infty ,\ \land \ (E,F) \in \Mdu, \ \land \ E \cup F = \emptyset \ \Longrightarrow \ \mu \bigl( E \cup F \bigr) = \mu \bigl( E \bigr) + \mu \bigl( F \bigr) $ (Finite additivity)
+        \item[ii)] $E,F \in \Mdu \ \land \ E \subset F \ \Longrightarrow \ \mu \bigl( E \setminus F \bigr) = \mu \bigl( E \bigr) + \mu \bigl( F \bigr)$ (Excision)
+        \item[iii)] $E,F \in \Mdu \ \land \ E \in F \ \Longrightarrow \ \mu \bigl( E \bigr) < \mu \bigl( F \bigr) $ (Monotonicity)
+    \end{itemize}
+\end{thm}
+\begin{proof}[]$\\$
+    \begin{itemize}
+        \item[i)] Take $E_1 = E \ , \ E_2 = F \, \ E_n = \emptyset \ \forall n \geq 3$ therefore we have a disjoint family:
+        \begin{align*}
+            \mu \bigl( E \cup F \bigr) 
+            &\equalexpl{For $sigma$- additivity}
+            \sum_{n = 1}^{\infty} \mu \bigl( E_n \bigr) = \mu \bigl( E\bigr) + \mu \bigl( F \bigr)
+        \end{align*}
+        \item[ii)] Recall that if $ E,F \in \Mdu \Rightarrow E \setminus F \in \Mdu $ 
+        \begin{align*}
+            F 
+            &\equalexpl{True if $ E \subset F $ }
+            E \cup (F \setminus E) \Longrightarrow E \cap (F \setminus E) = \emptyset
+            %\mu (F) = \mu (E) + \mu(F \setminus E)
+        \end{align*}
+        If we now apply (i) we get
+        \begin{align*}
+            \mu (F) = \mu (E) + \mu(F \setminus E) \Longrightarrow \mu (F \setminus E) 
+            &\equalexpl{We can do this because $ \mu (E) < \infty$}
+            \mu(F) - \mu(E)
+        \end{align*}
+        \item[iii)] If $ \mu (F \setminus E) < \infty $ then we can use (ii), otherwise ? (Given as exercise)
+    \end{itemize}
+\end{proof}
+
+\begin{thm}[Continuity along monotone sequences]$\\$
+    Let $(X,\Mdu , \mu)$ be our measure space.\\
+    \begin{itemize}
+        \item[i)] If $\gr{E_n}_{n \in \mathbb{N}} \subset \Mdu \ \land \ \gr{E_m} \nearrow \ \land \ E:= \lim_n E_n = \bigcup_{n=1}^{\infty} E_n $ : \\        
+        \begin{equation*}
+            \mu ( E) = \lim_{n} \mu (E_n)
+        \end{equation*} 
+        \item[ii)] if $\gr{E_n}_{n \in \mathbb{N}} \subset \Mdu \ \land \ \gr{E_m} \searrow  \ \land  \ E:= \lim_n E_n = \bigcap_{n=1}^{\infty} E_n $ : \\
+        \begin{equation*}
+            \mu ( E) = \lim_{n} \mu (E_n)
+        \end{equation*} 
+    \end{itemize}
+\end{thm}
+\newpage
+\begin{proof}[]$\\$
+    We'll use $\sigma$-additivty and the previous theorem by creating a disjoint family out of our $\gr{E_n}$ (you can check that $\sigma$-additivity is applicable yourself).\newline
+    \begin{itemize}
+        \item[i)] We define the following disjoint family:
+        \begin{equation*}
+            F_n = E_n \setminus E_{n-1} \qquad \text{where $E_0 = \emptyset$ or $F_1 = E_1$}
+        \end{equation*}
+        We can now start to apply some of the previously proven properties:
+        \begin{align*}
+            \mu (E) = \mu (\bigcup_{n=1}^{\infty} F_n)
+            \equalexpl{$\sigma$-additivity}
+            \sum_{n=1}^{\infty} \mu (F_n) = \sum_{n=1}^{\infty} \mu (E_n \setminus F_n)
+            \equalexpl{excision}
+            \sum_{n=1}^{\infty} \mu (E_n) - \mu (F_n)
+            \equalexpl{telescopic series}
+            \lim_{n\longrightarrow \infty} \mu(E_n) - \mu(E_0)
+        \end{align*}
+        \item[ii)] We define another disjoint family:
+        \begin{equation*}
+            G_n = E_1 \setminus E_n
+        \end{equation*}
+        The following properties are true:
+            \begin{itemize}
+                \item[0)] $G_n \in \Mdu$
+                \item[1)] $\gr{G_n} \nearrow$
+                \item[2)] $\bigcup_{n=1}^{\infty} G_n = E_1 \setminus \bigcap_{n=1}^{\infty} E_n = E_1 \setminus E$
+            \end{itemize}
+        \begin{align*}
+            \equalexpl{2)}
+            \mu \bigl(\bigcup_{n=1}^{\infty} G_n \bigr)
+            \equalexpl{1)}
+            \lim_{n\longrightarrow +\infty} \mu \bigl( G_n \bigr) = \lim_{n\longrightarrow +\infty} \bigl( \mu ( E_1) - \mu ( E_n) \bigr) = \mu \bigl( E_1 \bigr) - \lim_{n\longrightarrow +\infty} \bigl(  \mu ( E_n) \bigr)
+        \end{align*}
+        Therefore, since $\mu(E_1) < \infty$ we can subtract it from both sides and get:
+        \begin{equation*}
+            \mu(E) = \lim_{n\longrightarrow +\infty} \bigl(  \mu ( E_n) \bigr)
+        \end{equation*}
+    \end{itemize}
+    
+\end{proof}
+\begin{marker}
+Note that the assumption that $\mu(E_1) < \infty$ is essnetial for (ii):\newline
+Let $(\mathbb{N},\Peu(\mathbb{N}),\mu_\#)$ be our measure space, take $E_n = \gr{k \in \mathbb{N} : k \geq n}$ therefore $E_n \supset E_{n+1}$\newline
+Moreover $\mu_{\#} (E_n) = +\infty$ and $E = \lim_n E_n = \bigcup_{n=1}^{\infty} E_n = \emptyset$ \newline
+We now observe that $\forall m \in \mathbb{N} , m \notin E_{m+1}$, in other words the limit doesn't properly converge:
+\begin{equation*}
+    (\mu_{\#} (E) = 0 \neq \lim_n \mu_{\#}(E_n))
+\end{equation*}
+\end{marker}
+
+\begin{thm}[$\sigma$-sub additivity]$\\$
+    Take $\gr{E_n}_{n \in \mathbb{N}} \subset \Mdu$ sequence of measurable sets (not necessarily disjoint), the following is true:
+    \begin{equation*}
+        \mu \bigl( \bigcup_{n=1}^{\infty} E_n \bigr) \leq \sum_{n=1}^{\infty} \mu \bigl( E_n \bigr)
+    \end{equation*}
+\end{thm}
+\newpage
+\begin{proof}[]$\\$
+    Define the following family of sets:
+    \begin{equation*}
+        \begin{cases*}
+            F_1 = E_1 & \\
+            F_n = E_n \setminus \bigl( \bigcup_{k=1}^{n*1} E_k \bigr) & $\forall n \geq 2$
+        \end{cases*}
+    \end{equation*}
+    These are measurable, disjoint and:
+    \begin{equation*}
+        \bigcup_{n=1}^{\infty} \bigl( F_n \bigr) = \bigcup_{n=1}^{\infty} \bigl( E_n \bigr)
+    \end{equation*}
+    Therefore we can apply the following properties:
+    \begin{align*}
+        \mu \bigl( \bigcup_{n=1}^{\infty} E_n \bigr) = \mu \bigl( \bigcup_{n=1}^{\infty} F_n \bigr)
+        \equalexpl{$\sigma$-add}
+        \sum_{n=1}^{\infty} \mu \bigl( E_n \bigr)
+        \leqexpl{monotonicity $(F_n \subset E_n) \ \forall n$}
+        \sum_{n=1}^{\infty} \mu \bigl( E_n \bigr)
+    \end{align*}
+\end{proof}
+\begin{marker}[]$\\$
+    If $f \colon \Mdu \leftarrow \bigl[ 0, +\infty \bigr]$ is finitely-additive and $\sigma$-subadditive then it is also $\sigma$-additive.\newline
+    We'll seldom use this fact , but it is important to know that these are all linked properties. This is also how we can easily prove that something is a measure. (What's missing?)
+\end{marker}
+% section properties-of-measures (end)  
+\section{Sets of zero measure/negligible sets} % (fold)
+\label{sec:sets-of-zero-measure-negligible-sets}
+Let $(X,\Mdu,\mu)$ be our measure space.
+\begin{defn}[Negligible sets]$\\$
+    \begin{itemize}
+        \item N $in \Mdu$ has \emph{zero measure} if $\mu \bigl( N \bigr) = 0$
+        \item F $\subset X$ (not necessarily in $Mdu$) is \emph{negligible} if $F \subset N$ where $\mu \bigl( N \bigr) = 0$.\newline
+        Negligible sets are not generally measurable, but they have zero measure when they are (for monotonicity).
+    \end{itemize}
+\end{defn}
+
+\begin{defn}[Complete measures]$\\$
+    $\mu$ is \emph{complete} (or generally the measure space $(X,\Mdu,\mu)$ is complete) if every negligible set belongs to $\Mdu$
+\end{defn}
+A measure space $(X,\Mdu,\mu)$ needs not to be complete.\newline
+Define, however the following family of sets:
+\begin{equation*}
+    \overline{\Mdu} = \gr{E \subset X \colon \exists F_1,F_2 \in \Mdu \text{ s.t.} \ \ F_1 \subset E \subset F_2 \ \land \ \mu \bigl( F_2 \setminus F_1 \bigr) = 0}
+\end{equation*}
+$\overline{\Mdu}$ is a $\sigma$-algebra.\newline
+Moreover, for every set $E \in \overline{\Mdu}$ and $F_1,F_2$ as above define:
+\begin{equation*}
+    \overline{\mu} \bigl( E \bigr) \colon = \mu \bigl( F_1 \bigr) = \mu \bigl( F_2 \bigr)
+\end{equation*}
+We won't prove this fact but we'll make use of it.
+\newpage
+We'd like to define a measure $\lambda$ "on $\mathbb{R}$ (and subsequently $\mathbb{R}^2$,$\mathbb{R}^3$... ) such that:
+\begin{itemize}
+    \item $\lambda \bigl( (a,b) \bigr) = b-a$
+    \item $\lambda \bigl( E + x \bigr) = \lambda \bigl( E \bigr)$
+\end{itemize}
+Where $a \leq b$, $-\infty \leq a < +\infty$ and $-\infty < b \leq +\infty$.\newline
+In principle, we'd like to measure \emph{any} subset, that is, we want to chose $\Mdu = \Peu \bigl( \mathbb{R} \bigr)$. \\
+One seemingly innocent assumption is that $\mu \bigl( \gr{a} \bigr) = 0$ where $a$ is a point, however.
+\begin{thm}[Ulan]$\\$
+    The only measure on $\Peu \bigl( \mathbb{R} \bigr)$ s.t. $\mu \bigl( \gr{a} \bigr) = 0$ is the trivial measure:
+    \begin{equation*}
+        \mu \bigl( (a,b) \bigr) = 0 
+    \end{equation*}
+\end{thm}
+In the following, we will construct a concrete (read useful) $\sigma$-algebra which will allow the definition of the Lebesgue measure.
+\begin{defn}[]$\\$
+    Let $X$ be a set, an \emph{outer measure} $\mu^*$ on $X$ is a function:
+    \begin{equation*}
+        \mu^* \colon \Peu \bigl( x \bigr) \rightarrow [0,\infty]
+    \end{equation*}
+    Such that:
+    \begin{enumerate}
+        \item $\mu^* \bigl( \emptyset \bigr) = 0$
+        \item $E \subset F \subset X \ \Longrightarrow \ \mu^* \bigl( E \bigr) \leq \mu^* \bigl( F \bigr) $ (monotonicity)
+        \item $\gr{E_n}_{n} \subset \Peu(X) \ \Longrightarrow \mu^* \bigl( \bigcup_{n=1}^{\infty} E_n \bigr) \leq \sum_{n=1}^{\infty} \mu^* \bigl( E_n \bigr)$ ($\sigma$)-sub additivity
+    \end{enumerate}
+\end{defn}
+In a way, the price to pay to define a "measure" on $\Peu(\mathbb{R})$ is to forgo $\sigma$-additivity.\\
+The typical way of defining an outer measure is using a family of elementary sets: (e.g. the intervals).
+\begin{prp}[]$\\$
+Let $\Edu \subset \Peu(X)$ , $f \colon \Edu \rightarrow [0,+\infty]$.\\
+Assume: $\emptyset,X \in \Edu \ , \ f(\emptyset) = 0$.\\
+Then define, $\forall E \subset X$.
+    \begin{equation*}
+        \mu^* \bigl( E \bigr) = \inf \gr{\sum_{n=1}^{+\infty} f \bigl( A_n \bigr)\text{ , where} E \subset \bigcup_{n=1}^{\infty} S_n} \qquad A_n \in \Edu \text{ ($A_n$ is a covering of $E$)}
+    \end{equation*}
+Then $\mu^*$ is an outer measure on $X$.
+\end{prp}
+% section sets-of-zero-measure-negligible-sets (end)
+
 % chapter measure_theory (end)
-
-
 
 
