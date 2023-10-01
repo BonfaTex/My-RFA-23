@@ -7,40 +7,152 @@
 \section{Towards the Lebesgue measure} % (fold)
 \label{sec:towards_the_lebesgue_measure}
 
+We'd like to define a measure $\lambda$ "on $\mathbb{R}$ (and subsequently $\mathbb{R}^2$, $\mathbb{R}^3$, ... ) such that:
+\begin{itemize}
+    \item $\lambda \left( (a,b) \right) = b-a$ for $a,b\in\overline{\RR}$, $a\leq b$ $\leadsto$ the measure of an interval is simply its lenght
+
+    \begin{marker}
+    To be more precise, we should impose the following conditions on the parameters to avoid undefined situations:
+    \begin{equation*}
+    -\infty\leq a < +\infty \qquad -\infty<b\leq +\infty
+    \end{equation*}
+    \end{marker}
+
+    \item $\lambda \left( E + x \right) = \lambda \left( E \right)$ $\forall x\in \RR$ $\leadsto $ "invariance under translations"
+\end{itemize}
+
+What about  the $\sigma$-algebra? In principle, we'd like to measure any subset, so $\Mdu = \Peu \left( \mathbb{R} \right)$. In this case, one can see that $\lambda \left( \gr{a} \right) = 0$ $\big($hence $\lambda\left( [a,b] \right)=\lambda\left( (a,b) \right)\big)$. But it turns out that:
+
+\begin{thm}[Ulam]$\\$
+    The only measure on $\Peu \left( \mathbb{R} \right)$ s.t. $\lambda \left( \gr{a} \right) = 0$ is the trivial measure.
+\end{thm}
+
+Because of this, $\lambda\left( (a,b) \right) = 0 $ for any $(a,b)$ $\Longrightarrow$ no way: $\Mdu=\xcancel{\Peu(\RR)}$.
+
 % section towards_the_lebesgue_measure (end)
 
 \section{Outer measures} % (fold)
 \label{sec:outer_measures}
 
-[...]
+In the following, we will construct a concrete $\sigma$-algebra which will allow the definition of the Lebesgue measure.
 
-The most common way to obtain outer measures is to start with a family $\Eeu$ of \emph{elementary sets} on which a notion of measure is defined (e.g. intervals and their lengths, or rectangles and their areas in the plane) and then to approximate arbitrary sets "from the outside" by countable unions of members of $\Eeu$. The precise construction is as follows.
+\begin{defn}[Outer measure]$\\$
+Let $X$ be a set. An outer measure $\mu^*$ on $X$ is a function $\mu^* : \Peu (X) \to [0,+\infty]$ such that:
+\begin{enumerate}[(1)]
+\item $\mu^* \left( \emptyset \right) = 0$
+\item Monotonicity: $E \subset F \subset X \ \Longrightarrow \ \mu^* \left( E \right) \leq \mu^* \left( F \right) $
+\item $\sigma$-sub additivity: $\gr{E_n}_{n} \subset \Peu(X) \ \Longrightarrow \mu^* \left(\displaystyle \bigcup_{n=1}^{\infty} E_n \right) \leq \displaystyle\sum_{n=1}^{\infty} \mu^* \left( E_n \right)$
+\end{enumerate}
+\end{defn}
+
+With the outer measure we are not fixing the $\sigma$-algebra, but the price to pay is to forgo $\sigma$-additivity.
+
+\newpage
+
+The most common way to obtain outer measures is to start with a family $\bondox{E}$ of \emph{elementary sets} on which a notion of measure is defined (e.g. intervals and their lengths, or rectangles and their areas in the plane) and then to approximate arbitrary sets "from the outside" by countable unions of members of $\bondox{E}$. The precise construction is as follows.
 
 \begin{proposition}$\\$
-Let $\Eeu\subset\Peu(X)$ and $f:\Eeu\to[0,\infty]$ be such that $\varnothing,X\subset\Eeu$ and $f(\varnothing)=0$. For any $E\subset X$, define
+Let $\bondox{E}\subset\Peu(X)$ and $f:\bondox{E}\to[0,\infty]$ be such that $\varnothing,X\subset\bondox{E}$ and $f(\varnothing)=0$. For any $E\subset X$, define
 \begin{equation}
 \label{outer_inf}
-\mu^*(E)=\inf\left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\Eeu\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
+\mu^*(E)=\inf\left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
 \end{equation}
 (i.e. $\left\{ A_n\right\}_n$ is a covering of $E$). Then $\mu^*$ is an outer measure on $X$.
 \end{proposition}
 
 Few initial comments:
 \begin{itemize}
-    \item As we said before, you can think of $\Eeu$ as $\{(a,b)\}$ and of $f$ as $b-a$.
+    \item As we said before, you can think of $\bondox{E}$ as $\{(a,b)\}$ and of $f$ as $b-a$.
 
     \item $\mu^*(E)$ could be greater than the measure we want because $A_n$ are not necessarily disjoint: they can overlap each other. However, we're taking the infimum so it's a good compromise.
 
     \item Speaking of the inf, we know that it's well defined for nonempty sets. In this case, the set
     \begin{equation*}
-    \left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\Eeu\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
+    \left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
     \end{equation*}
-    cannot be empty (cause $\{X,\varnothing,\varnothing,...\}$ is a covering of $E$ \textbf{sure?!}) thus the inf is well defined.
+    cannot be empty $\big($cause $\{X,\varnothing,\varnothing,...\}$ is a covering of $E$$\big)$ thus the inf is well defined.
 \end{itemize}
 
-\begin{proof}
-ok
+\begin{proof}$\\$
+We want to show that $\mu^*$ defined by (\ref{outer_inf}) is an outer measure, hence we have to prove the points in its definition:
+\begin{itemize}
+    \item[(0)] Is true that $\mu^*:\Peu(X)\to[0,\infty]$, i.e. $\mu^*(A)\geq 0$ for any $A\in\Peu(X)$?
+
+    Yes, it is true because $\{X,\varnothing,\varnothing,...\}$ is a cover of $A$ and so the inf is well defined, i.e. $\geq 0$.
+
+    \item[(1)] Is true that $\mu^*(\varnothing)=0$?
+
+    On one hand we have
+    \begin{equation*}
+    \mu^*(\varnothing)\geq 0
+    \end{equation*}
+    thanks to the previous point, and on the other hand we have
+    \begin{equation*}
+    \mu^*(\varnothing)\leq \sum_{n=1}^\infty f(\varnothing)=0
+    \end{equation*}
+    thanks to the fact that $\{\varnothing,\varnothing,...\}$ is a cover of $\varnothing$. Then:
+    \begin{equation*}
+    0\leq \mu^*(\varnothing)\leq 0\quad \Longrightarrow\quad \mu^*(\varnothing)=0
+    \end{equation*}
+
+    \item[(2)] Is true that $E\subset F\ \Longrightarrow\ \mu^*(E)\leq\mu^*(F)$ (monotonicity)?
+
+    Let's take $A\subset B\subset X$ and any covering of $B$, i.e. $B\subset\bigcup_{n=1}^\infty E_n$ where $E_n\in\bondox{E}$ for any $n$ (elementary sets). This covering, since $A\subset B$, is also a covering of $A$. So by definition:
+    \begin{equation*}
+    \mu^*(A)\leq \sum_{n=1}^\infty f(E_i)
+    \end{equation*}
+
+    Now take the infimum above all possible covering $\{E_n\}$:
+    \begin{equation*}
+    \underbracket[0.2pt]{\inf \Bigg\{ \mu^*(A) \Bigg\} }_{\mu^*(A)}\leq \underbracket[0.2pt]{\inf \left\{ \sum_n f(E_i) \right\}}_{\mu^*(B)}\quad\Longrightarrow\quad \mu^*(A)\leq\mu^*(B)
+    \end{equation*}
+
+    \item[(3)] Is true that $\displaystyle\left\{ A_n \right\}_{n\in\NN}\subset\Peu(X)\ \Longrightarrow\ \mu^*\left( \bigcup_{n\in\NN}A_n \right)\leq \sum_{n=1}^\infty \mu^*\left( A_n \right)$ ($\sigma$-subadditivity)?
+
+    First, call $\displaystyle\bigcup_{n\in\NN}A_n =A$ and consider $\mu^*(A)<+\infty$.
+
+    \begin{marker}
+    Here, we want to be clear about the definition of infimum because it will be useful for both this and the next demonstrations.
+
+    \bigskip
+
+    Let $T\subset\RR$, $T\neq\varnothing$, $\inf T=\overline{t}\in\RR$. The \emph{definition of infimum} means that:
+    \begin{itemize}[$\triangleright$]
+        \item $\overline{t}\leq t\quad\forall t\in T$ (it's a lower bound)
+        \item $\forall\delta>0\quad \exists t_\delta\in T\quad$s.t.$\quad t_\delta\leq \overline{t}+\delta$ (it cannot be better)
+    \end{itemize}
+    So the inf is the best/greatest lower bound.
+
+    \bigskip
+
+    \textbf{NB:} l'inf non deve per forza appartenere a $T$, e.g. $\inf\left\{ (0,1) \right\}=0$. Infatti la prima proprietà dice che deve essere più piccolo di ogni elemento di $T$, invece la seconda dice che è il "migliore" nel senso che ogni volta che fissi un $\delta$ allora esisterà sempre un'elemento nell'insieme compreso tra l'inf e l'inf+$\delta$; se così non fosse, allora ogni elemento di $T$ sarebbe $\geq$ dell'inf+$\delta$, e di conseguenza l'inf sarebbe in realtà inf+$\delta$.
+
+    \bigskip
+
+    The most practical way to use this is to construct a "Minimizing sequence" by applying repetitively the second propertry for different values of $\delta$ (tipically $\delta=\delta_n\xrightarrow{n\to\infty}0$). For example:
+    \begin{equation*}
+    \delta=\frac{1}{n}\ (n\geq 1)\quad\leadsto\quad t_n\in T\quad\text{s.t.}\quad \overline{t}\leq t_n\leq \overline{t}+\frac{1}{n} 
+    \end{equation*}
+    \end{marker}
+
+    Using the definition of inf \textbf{for every} $\mu^*\left( A_n \right)$ with $\delta=\dfrac{\Ec}{2^n}$ ($\Ec>0$ fixed), we have:
+    \begin{equation*}
+    \forall n\in\NN\quad\exists\left\{ E_k^n \right\}_{k\in\NN}\subset\Eeu\quad\text{s.t.}\quad A_n\subset\bigcup_{k\in\NN}E_k^n\quad\text{and}\quad \sum_{k=1}^\infty f\left( E_k^n \right)\overset{\circledast}{\leq} \mu^*\left( A_n \right)+\dfrac{\Ec}{2^n}
+    \end{equation*}
+    $\big($we have just applied the def. (\ref{outer_inf}) for $A_n$: there exists a sequence of elementary sets $\left\{ E_k^n \right\}_{k}$ which is a covering of $A_n$; moreover, thanks to the second property of infimum, we have the inequality for the minimizing sequence (in this case $\overline{t}=\mu^*\left( A_n \right)$ and $\delta=\nicefrac{\Ec}{2^n}$)$\big)$
+
+    Now, since $\displaystyle\bigcup_{n\in\NN}\left( \bigcup_{k\in\NN} E_k^n \right)$ is a countable union and $A\subset\displaystyle\bigcup_{n,k}E_k^n$ then:
+
+    \begin{gather*}
+    \mu^*(A)\overset{\eqref{outer_inf}}{\leq} \sum^{\infty}_{n,k=1} f\left( E_k^n \right)=\sum^{\infty}_{n=1} \left( \sum^{\infty}_{k=1} f\left( E_k^n \right) \right)\overset{\circledast}{\leq} \sum^{\infty}_{n=1} \left( \mu^*\left( A_n \right)+\frac{\Ec}{2^n} \right) = \\
+    =\sum^{\infty}_{n=1} \mu^*\left( A_n \right) + \Ec \underbracket[0.2pt]{\sum^{\infty}_{n=1} \frac{1}{2^n}}_{=1} =  \sum^{\infty}_{n=1} \mu^*\left( A_n \right) + \Ec 
+    \end{gather*}
+
+    Since $\Ec$ is arbitrary, we're done (you could prove the case when $\mu^*=+\infty$ by yourself, as an exercise).
+\end{itemize}
 \end{proof}
+
+\newpage
 
 % section outer_measures (end)
 

@@ -207,6 +207,16 @@
 \newcommand{\qu}[1]{\left[ #1 \right]}
 \newcommand{\td}[1]{\left(#1 \right)}
 
+\newcommand{\equalexpl}[1]{%
+  \underset{\substack{\uparrow\\\vspace{-2em}\mathrlap{\text{#1}}}}{\hspace{0.3em}=}
+}
+\newcommand{\leqexpl}[1]{%
+  \underset{\substack{\uparrow\\\vspace{-2em}\mathrlap{\text{#1}}}}{\hspace{0.3em}\leq}
+}
+\newcommand{\arrowlexpl}[1]{%
+  \underset{\substack{\uparrow\\\vspace{-2em}\mathrlap{\text{#1}}}}{\hspace{0.3em}$\Rightarrow$}
+}
+
 % Bold
 \renewcommand{\AA}{\mathbb A}
 \newcommand{\BB}{\mathbb{B}}
@@ -239,6 +249,15 @@
 \usepackage{euscript} % accedi a Euler usando \EuScript{}
 \usepackage[cal=dutchcal,calscaled=.97]{mathalfa} % default calligraphic font, accedi con \mathcal{}
 \DeclareMathAlphabet{\modern}{OMS}{zplm}{m}{n} % accedi al calligrafico predefinito (computer modern roman) usando \modern{}
+
+\DeclareMathAlphabet{\mathrsfso}{U}{rsfso}{m}{n}
+\newcommand{\rsf}{\mathrsfso}
+
+\DeclareFontFamily{U}{BOONDOX-calo}{\skewchar\font=45}
+\DeclareFontShape{U}{BOONDOX-calo}{m}{n}{
+  <-> s*[1.05] BOONDOX-r-calo}{}
+\DeclareMathAlphabet{\mathcalboondox}{U}{BOONDOX-calo}{m}{n}
+\newcommand{\bondox}{\mathcalboondox}
 
 % Calligrafico predefinito (Computer Modern Roman)
 \newcommand{\Ac}{\modern{A}}
