@@ -243,7 +243,7 @@
 \newcommand{\WW}{\mathbb{W}}
 \newcommand{\XX}{\mathbb{X}}
 \newcommand{\YY}{\mathbb{Y}}
-\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}} 
 
 % Calligraphic 
 \usepackage{euscript} % accedi a Euler usando \EuScript{}
@@ -421,6 +421,9 @@
 \newcommand{\dPP}{\dspace \de \PP}
 \newcommand{\dsig}{\dspace \de \sigma}
 \newcommand{\dth}{\dspace \de \theta}
+\newcommand{\demu}{\dspace \de \mu}
+\newcommand{\denu}{\dspace \de \nu}
+\newcommand{\dela}{\dspace \de \lambda}
 \newcommand{\deta}{\dspace \de \eta}
 \newcommand{\dph}{\dspace \de \varphi}
 \newcommand{\dxv}{\dspace \de \mathbf{x}}
@@ -439,6 +442,9 @@
 \newcommand{\Lu}{\mathcal{L}^1}
 \newcommand{\ld}{\ell^2}
 \newcommand{\frp}{\partial_pQ_T}
+
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+
 
 \newcommand{\hod}[1]{^{\scriptscriptstyle\mathrm{#1}}} % per le derivate con exp romano
 
@@ -545,6 +551,23 @@ leftmargin=0cm,
 rightmargin=0cm,
 linewidth=1pt,
 innerbottommargin=5pt]{oBox}
+
+% red box
+\newmdenv[skipabove=7pt,
+skipbelow=4pt,
+rightline=true,
+leftline=true,
+topline=true,
+bottomline=true,
+linecolor=red,
+backgroundcolor=red!0,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=1pt,
+innerbottommargin=5pt]{rBox}
 
 % green box
 \newmdenv[skipabove=7pt,
@@ -723,10 +746,10 @@ innerbottommargin=5pt]{blackBox}
 
 \newenvironment{defn}{\begin{bBox}\begin{definitionT}}{\end{definitionT}\end{bBox}}
 \newenvironment{thm}{\begin{gBox}\begin{theoremT}}{\end{theoremT}\end{gBox}}
-\newenvironment{coro}{\begin{oBox}\begin{corollaryT}}{\end{corollaryT}\end{oBox}}
+\newenvironment{coro}{\begin{aBox}\begin{corollaryT}}{\end{corollaryT}\end{aBox}}
 \newenvironment{lemma}{\begin{lBox}\begin{lemmaT}}{\end{lemmaT}\end{lBox}}
 \newenvironment{proposition}{\begin{atBox}\begin{propositionT}}{\end{propositionT}\end{atBox}}
-\newenvironment{rem}{\begin{oBox}\begin{remarkT}}{\end{remarkT}\end{oBox}}
+\newenvironment{rem}{\begin{rBox}\begin{remarkT}}{\end{remarkT}\end{rBox}}
 \newenvironment{exa}{\begin{sBox}\begin{exampleT}}{\end{exampleT}\end{sBox}}
 \newenvironment{es}{\begin{pBox}\begin{exerciseT}}{\end{exerciseT}\end{pBox}}
 \newenvironment{prp}{\begin{hBox}\begin{propertyT}}{\end{propertyT}\end{hBox}}

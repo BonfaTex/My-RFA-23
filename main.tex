@@ -41,6 +41,10 @@
 \numberwithin{figure}{chapter}
 \numberwithin{equation}{chapter}
 
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{49}}
+
 \begin{document}
 
 \frontmatter
@@ -118,34 +122,13 @@
 \input{teoria/cap3.tex} \cleardoublepage
 \input{teoria/cap4.tex} \cleardoublepage
 \input{teoria/cap5.tex} \cleardoublepage
-\input{teoria/cap6.tex} \cleardoublepage
-\input{teoria/cap7.tex} \cleardoublepage
-\input{teoria/cap8.tex} \cleardoublepage
-\input{teoria/cap9.tex} \cleardoublepage
-\input{teoria/cap10.tex} \cleardoublepage
 
 \part{Functional Analysis}
-\input{teoria/cap11.tex} \cleardoublepage
-\input{teoria/cap12.tex} \cleardoublepage
-\input{teoria/cap13.tex} \cleardoublepage
-\input{teoria/cap14.tex} \cleardoublepage
-\input{teoria/cap15.tex} \cleardoublepage
-\input{teoria/cap16.tex} \cleardoublepage
-\input{teoria/cap17.tex} \cleardoublepage
-\input{teoria/cap18.tex} \cleardoublepage
+\input{teoria/cap9.tex} \cleardoublepage
 
-\part{Exercise classes}
+\part{Exercise Classes}
 % \setcounter{chapter}{0}
 \numberwithin{equation}{chapter}
 \input{esercitazioni/eser1} \cleardoublepage
-\input{esercitazioni/eser2} \cleardoublepage
-\input{esercitazioni/eser3} \cleardoublepage
-\input{esercitazioni/eser4} \cleardoublepage
-\input{esercitazioni/eser5} \cleardoublepage
-\input{esercitazioni/eser6} \cleardoublepage
-\input{esercitazioni/eser7} \cleardoublepage
-\input{esercitazioni/eser8} \cleardoublepage
-\input{esercitazioni/eser9} \cleardoublepage
-\input{esercitazioni/eser10} \cleardoublepage
 
 \end{document}

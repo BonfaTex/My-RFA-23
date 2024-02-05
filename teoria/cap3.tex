@@ -1,40 +1,33 @@
 %!TEX root = ../main.tex
 
-\chapter{Lebesgue measure} % (fold)
+\chapter{Lebesgue Measure} % (fold)
 \label{cha:lebesgue_measure}
 \thispagestyle{empty}
 
 \section{Towards the Lebesgue measure} % (fold)
 \label{sec:towards_the_lebesgue_measure}
 
-We'd like to define a measure $\lambda$ "on $\mathbb{R}$ (and subsequently $\mathbb{R}^2$, $\mathbb{R}^3$, ... ) such that:
+We'd like to define a measure $\lambda$ on $\mathbb{R}$ (and subsequently $\mathbb{R}^2$, $\mathbb{R}^3$, ...) such that:
 \begin{itemize}
-    \item $\lambda \left( (a,b) \right) = b-a$ for $a,b\in\overline{\RR}$, $a\leq b$ $\leadsto$ the measure of an interval is simply its lenght
+    \item $\lambda \big( (a,b) \big) = b-a$ $\ \forall a,b\in\overline{\RR}$, $a\leq b$ $\leadsto$ the measure of an interval is simply its lenght
 
-    \begin{marker}
-    To be more precise, we should impose the following conditions on the parameters to avoid undefined situations:
-    \begin{equation*}
-    -\infty\leq a < +\infty \qquad -\infty<b\leq +\infty
-    \end{equation*}
-    \end{marker}
-
-    \item $\lambda \left( E + x \right) = \lambda \left( E \right)$ $\forall x\in \RR$ $\leadsto $ "invariance under translations"
+    \item $\lambda \left( x+E \right) = \lambda \left( E \right)$ $\ \forall x\in \RR,\ \forall E\subset \RR$ $\leadsto $ "invariance under translations"
 \end{itemize}
 
-What about  the $\sigma$-algebra? In principle, we'd like to measure any subset, so $\Mdu = \Peu \left( \mathbb{R} \right)$. In this case, one can see that $\lambda \left( \gr{a} \right) = 0$ $\big($hence $\lambda\left( [a,b] \right)=\lambda\left( (a,b) \right)\big)$. But it turns out that:
+What about  the $\sigma$-algebra? In principle, we'd like to measure any subset, so $\Mdu = \Peu \left( \mathbb{R} \right)$. In this way we measure points of $\RR$: $\lambda \left( \gr{a} \right) = 0$. But it turns out that:
 
 \begin{thm}[Ulam]$\\$
     The only measure on $\Peu \left( \mathbb{R} \right)$ s.t. $\lambda \left( \gr{a} \right) = 0$ is the trivial measure.
 \end{thm}
 
-Because of this, $\lambda\left( (a,b) \right) = 0 $ for any $(a,b)$ $\Longrightarrow$ no way: $\Mdu=\xcancel{\Peu(\RR)}$.
+Because of this, if we take $\Mdu=\Peu(\RR)$ then $\lambda\big( (a,b) \big) = 0 $ for any $(a,b)$ (because $\lambda$ is the trivial measure). Hence, we need a smaller $\sigma$-algebra.
 
 % section towards_the_lebesgue_measure (end)
 
 \section{Outer measures} % (fold)
 \label{sec:outer_measures}
 
-In the following, we will construct a concrete $\sigma$-algebra which will allow the definition of the Lebesgue measure.
+In the following, we build a concrete $\sigma$-algebra which allows the definition of the Lebesgue measure.
 
 \begin{defn}[Outer measure]$\\$
 Let $X$ be a set. An outer measure $\mu^*$ on $X$ is a function $\mu^* : \Peu (X) \to [0,+\infty]$ such that:
@@ -47,70 +40,59 @@ Let $X$ be a set. An outer measure $\mu^*$ on $X$ is a function $\mu^* : \Peu (X
 
 With the outer measure we are not fixing the $\sigma$-algebra, but the price to pay is to forgo $\sigma$-additivity.
 
+\textit{Examples.} $\mu^*:\Peu(\RR)\to[0,\infty]$ s.t.
+\begin{equation*}
+\mu^*(A)=\begin{cases}
+    0, &\text{ if }A=\varnothing\\
+    1, &\text{otherwise}
+\end{cases}
+\end{equation*}
+
+is an outer measure, but \underline{not} a measure. Instead, $\mu^*:\Peu(\NN)\to[0,\infty]$ s.t. 
+\begin{equation*}
+\mu^*(A)=\begin{cases}
+    |A|, &\text{ if }A\text{ finte}\\
+    \infty, &\text{otherwise}
+\end{cases}
+\end{equation*}
+is an outer measure and a measure too (indeed, it's the counting measure).
+
 \newpage
 
-The most common way to obtain outer measures is to start with a family $\bondox{E}$ of \emph{elementary sets} on which a notion of measure is defined (e.g. intervals and their lengths, or rectangles and their areas in the plane) and then to approximate arbitrary sets "from the outside" by countable unions of members of $\bondox{E}$. The precise construction is as follows.
+Those were trivial examples. What we really are interested in is:
 
-\begin{proposition}$\\$
-Let $\bondox{E}\subset\Peu(X)$ and $f:\bondox{E}\to[0,\infty]$ be such that $\varnothing,X\subset\bondox{E}$ and $f(\varnothing)=0$. For any $E\subset X$, define
+$\boxed{\text{Q}_1}$ : how to build an outer measure?
+
+$\boxed{\text{Q}_2}$ : how to go from an outer measure to a measure, i.e., how to gain $\sigma$-additivity?
+
+\begin{rem}
+$\mu$ measure implies $\mu$ outer measure (because $\sigma$-add. implies $\sigma$-subadd.), but the counter isn't true: remember Ulam, we have to work on a smaller collection of subsets than $\Peu(X)$.    
+\end{rem}
+
+\bigskip
+
+$\boxed{\text{A}_1}$
+
+The most common way to obtain outer measures is to start with a family $\bondox{E}$ of \emph{elementary sets} on which a notion of measure is defined (e.g., intervals and their lengths, rectangles and their areas, etc.) and then to approximate arbitrary sets "from the outside" by countable unions of members of $\bondox{E}$. The precise construction is as follows.
+
+\begin{proposition}[Generation of an outer measure from elementary sets]$\\$
+Let $\bondox{E}\subset\Peu(X)$ and $f:\bondox{E}\to[0,\infty]$ be such that $\varnothing,X\in\bondox{E}$ and $f(\varnothing)=0$. For any $E\subset X$, define
 \begin{equation}
 \label{outer_inf}
-\mu^*(E)=\inf\left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
+\begin{aligned}
+\mu^*(E)&=\inf\left\{\sum^{\infty}_{n=1}f\left( C_n \right)\,:\,C_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}C_n \right\} \\
+&=\inf\left\{\sum^{\infty}_{n=1}f\left( C_n \right)\,:\,\gr{C_n}\subset\bondox{E}\text{ is a covering of }E \right\}
+\end{aligned}
 \end{equation}
-(i.e. $\left\{ A_n\right\}_n$ is a covering of $E$). Then $\mu^*$ is an outer measure on $X$.
+
+Then $\mu^*$ is an outer measure on $X$.
 \end{proposition}
 
 Few initial comments:
 \begin{itemize}
-    \item As we said before, you can think of $\bondox{E}$ as $\{(a,b)\}$ and of $f$ as $b-a$.
+    \item As we said before, you can think of $\bondox{E}$ as \emph{intervals} and $f$ as \emph{length}.
 
-    \item $\mu^*(E)$ could be greater than the measure we want because $A_n$ are not necessarily disjoint: they can overlap each other. However, we're taking the infimum so it's a good compromise.
-
-    \item Speaking of the inf, we know that it's well defined for nonempty sets. In this case, the set
-    \begin{equation*}
-    \left\{\sum^{\infty}_{n=1}f\left( A_n \right)\,:\,A_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}A_n \right\}
-    \end{equation*}
-    cannot be empty $\big($cause $\{X,\varnothing,\varnothing,...\}$ is a covering of $E$$\big)$ thus the inf is well defined.
-\end{itemize}
-
-\begin{proof}$\\$
-We want to show that $\mu^*$ defined by (\ref{outer_inf}) is an outer measure, hence we have to prove the points in its definition:
-\begin{itemize}
-    \item[(0)] Is true that $\mu^*:\Peu(X)\to[0,\infty]$, i.e. $\mu^*(A)\geq 0$ for any $A\in\Peu(X)$?
-
-    Yes, it is true because $\{X,\varnothing,\varnothing,...\}$ is a cover of $A$ and so the inf is well defined, i.e. $\geq 0$.
-
-    \item[(1)] Is true that $\mu^*(\varnothing)=0$?
-
-    On one hand we have
-    \begin{equation*}
-    \mu^*(\varnothing)\geq 0
-    \end{equation*}
-    thanks to the previous point, and on the other hand we have
-    \begin{equation*}
-    \mu^*(\varnothing)\leq \sum_{n=1}^\infty f(\varnothing)=0
-    \end{equation*}
-    thanks to the fact that $\{\varnothing,\varnothing,...\}$ is a cover of $\varnothing$. Then:
-    \begin{equation*}
-    0\leq \mu^*(\varnothing)\leq 0\quad \Longrightarrow\quad \mu^*(\varnothing)=0
-    \end{equation*}
-
-    \item[(2)] Is true that $E\subset F\ \Longrightarrow\ \mu^*(E)\leq\mu^*(F)$ (monotonicity)?
-
-    Let's take $A\subset B\subset X$ and any covering of $B$, i.e. $B\subset\bigcup_{n=1}^\infty E_n$ where $E_n\in\bondox{E}$ for any $n$ (elementary sets). This covering, since $A\subset B$, is also a covering of $A$. So by definition:
-    \begin{equation*}
-    \mu^*(A)\leq \sum_{n=1}^\infty f(E_i)
-    \end{equation*}
-
-    Now take the infimum above all possible covering $\{E_n\}$:
-    \begin{equation*}
-    \underbracket[0.2pt]{\inf \Bigg\{ \mu^*(A) \Bigg\} }_{\mu^*(A)}\leq \underbracket[0.2pt]{\inf \left\{ \sum_n f(E_i) \right\}}_{\mu^*(B)}\quad\Longrightarrow\quad \mu^*(A)\leq\mu^*(B)
-    \end{equation*}
-
-    \item[(3)] Is true that $\displaystyle\left\{ A_n \right\}_{n\in\NN}\subset\Peu(X)\ \Longrightarrow\ \mu^*\left( \bigcup_{n\in\NN}A_n \right)\leq \sum_{n=1}^\infty \mu^*\left( A_n \right)$ ($\sigma$-subadditivity)?
-
-    First, call $\displaystyle\bigcup_{n\in\NN}A_n =A$ and consider $\mu^*(A)<+\infty$.
-
+    \item Speaking of the inf:
     \begin{marker}
     Here, we want to be clear about the definition of infimum because it will be useful for both this and the next demonstrations.
 
@@ -135,35 +117,75 @@ We want to show that $\mu^*$ defined by (\ref{outer_inf}) is an outer measure, h
     \end{equation*}
     \end{marker}
 
-    Using the definition of inf \textbf{for every} $\mu^*\left( A_n \right)$ with $\delta=\dfrac{\Ec}{2^n}$ ($\Ec>0$ fixed), we have:
+    In our case the set
     \begin{equation*}
-    \forall n\in\NN\quad\exists\left\{ E_k^n \right\}_{k\in\NN}\subset\Eeu\quad\text{s.t.}\quad A_n\subset\bigcup_{k\in\NN}E_k^n\quad\text{and}\quad \sum_{k=1}^\infty f\left( E_k^n \right)\overset{\circledast}{\leq} \mu^*\left( A_n \right)+\dfrac{\Ec}{2^n}
+    \left\{\sum^{\infty}_{n=1}f\left( C_n \right)\,:\,C_n\in\bondox{E}\text{ and }E\subset\bigcup_{n=1}^{\infty}C_n \right\}
     \end{equation*}
-    $\big($we have just applied the def. (\ref{outer_inf}) for $A_n$: there exists a sequence of elementary sets $\left\{ E_k^n \right\}_{k}$ which is a covering of $A_n$; moreover, thanks to the second property of infimum, we have the inequality for the minimizing sequence (in this case $\overline{t}=\mu^*\left( A_n \right)$ and $\delta=\nicefrac{\Ec}{2^n}$)$\big)$
-
-    Now, since $\displaystyle\bigcup_{n\in\NN}\left( \bigcup_{k\in\NN} E_k^n \right)$ is a countable union and $A\subset\displaystyle\bigcup_{n,k}E_k^n$ then:
-
-    \begin{gather*}
-    \mu^*(A)\overset{\eqref{outer_inf}}{\leq} \sum^{\infty}_{n,k=1} f\left( E_k^n \right)=\sum^{\infty}_{n=1} \left( \sum^{\infty}_{k=1} f\left( E_k^n \right) \right)\overset{\circledast}{\leq} \sum^{\infty}_{n=1} \left( \mu^*\left( A_n \right)+\frac{\Ec}{2^n} \right) = \\
-    =\sum^{\infty}_{n=1} \mu^*\left( A_n \right) + \Ec \underbracket[0.2pt]{\sum^{\infty}_{n=1} \frac{1}{2^n}}_{=1} =  \sum^{\infty}_{n=1} \mu^*\left( A_n \right) + \Ec 
-    \end{gather*}
-
-    Since $\Ec$ is arbitrary, we're done (you could prove the case when $\mu^*=+\infty$ by yourself, as an exercise).
+    cannot be empty $\big($cause $\{X,\varnothing,\varnothing,...\}$ is a covering of $E$$\big)$ thus the inf is well defined.
 \end{itemize}
-\end{proof}
 
 \newpage
 
-% section outer_measures (end)
+\begin{proof}$\\$
+We want to show that $\mu^*$ defined by (\ref{outer_inf}) is an outer measure, hence we have to prove the points in its definition:
+\begin{itemize}
+    \item[(0)] $\mu^*:\Peu(X)\to[0,\infty]$ ?
 
-\section{Carathéodory's theorem} % (fold)
-\label{sec:carathéodory_s_theorem}
+    Take a generic $A\subset\Peu(X)$. Then $\{X,\varnothing,\varnothing,...\}$ is a cover of $A$ and so the inf is well defined, i.e. $\geq 0$.
 
-% section carathéodory_s_theorem (end)
+    \item[(1)] $\mu^*(\varnothing)=0$ ?
 
-\section{Finally, the Lebesgue measure} % (fold)
-\label{sec:finally_the_lebesgue_measure}
+    Since $\{\varnothing,\varnothing,...\}$ is a covering of $\varnothing$ we have
+    \begin{equation*}
+    0 \overset{(0)}{\leq}\mu^*(\varnothing)\leq\sum_{n=1}^\infty f(\varnothing)=0\qquad\Longrightarrow\qquad \mu*(\varnothing)=0
+    \end{equation*}
 
-% section finally_the_lebesgue_measure (end)
+    \item[(2)] monotonicity?
+
+    Let's take $A\subset B\subset X$ and write down the definition of $\mu^*$ for the bigger set:
+    \begin{equation*}
+    \begin{aligned}
+    \mu^*(B)&=\inf\left\{\sum^{\infty}_{n=1}f\left( C_n \right)\,:\,C_n\in\bondox{E}\text{ and }B\subset\bigcup_{n=1}^{\infty}C_n \right\} \\
+    &=\left|
+    \begin{aligned}
+    A\subset B\ &\Rightarrow\ \bigcup_{n=1}^{\infty}C_n\text{ is also a covering for }A \\
+    &\Rightarrow\text{inf of all coverings can't be bigger}
+    \end{aligned} 
+    \right. \\
+    &\geq \inf\left\{\sum^{\infty}_{n=1}f\left( C_n \right)\,:\,C_n\in\bondox{E}\text{ and }A\subset\bigcup_{n=1}^{\infty}C_n \right\} = \mu*(A) \qquad \Longrightarrow\qquad \mu^*(A)\leq\mu^*(B)
+    \end{aligned}
+    \end{equation*}
+
+    \item[(3)] $\sigma$-subadditivity?
+
+    Take $\left\{ A_n \right\}_{n\in\NN}\subset\Peu(X)$. We have to show that
+    \begin{equation*}
+    \mu^*\left( \bigcup_{n\in\NN}A_n \right)\leq \sum_{n=1}^\infty \mu^*\left( A_n \right)
+    \end{equation*}
+
+    Suppose $\mu^*\left( A_n \right)<\infty\ \forall n$ (because if $\,\exists \overline{n}$ s.t. $\mu^*\left( A_{\overline{n}} \right)=\infty$ then $\mu^*\left( \bigcup_{n}A_n \right)\leq\infty$ trivial).
+
+    Fix $\Ec>0$ and choose $\Ec_n$ s.t. $\displaystyle\sum_{n=1}^\infty\Ec_n=\Ec$ - for istance, $\Ec_n=\dfrac{\Ec}{2^n}$.    
+
+    \textbf{For every} $\mu^*\left( A_n \right)$ we can use the definition of infimum:
+    \begin{equation*}
+    \exists\left\{ C_{n,k} \right\}_{k\in\NN}\subset\bondox{E}\quad\text{s.t.}\quad \underbracket[0.5pt]{A_n\subset\bigcup_{k=1}^\infty C_{n,k}}_{\circleddash}\quad\text{and}\quad \underbracket[0.5pt]{\mu^*\left( A_n \right)\geq \sum_{k=1}^\infty f\left( C_{n,k} \right)-\Ec_n}_{\text{inf=largest lower bound }\circledast}
+    \end{equation*}
+
+    Now, thanks to $\circleddash$
+    \begin{equation*}
+    \bigcup_n A_n \subset \bigcup_n \Bigg( \bigcup_k C_{n,k} \Bigg)=\bigcup_{n,k} C_{n,k}\qquad\text{(countable union)}
+    \end{equation*}
+
+    thus
+    \begin{equation*}
+    \mu^*\left( \bigcup_{n\in\NN}A_n \right)\overset{\text{mon.}}{\leq} \mu^*\left( \bigcup_{n,k}C_{n,k} \right) \overset{\text{def. }\mu^*}{\leq} \sum_n\Bigg(\sum_k f\left( C_{n,k} \right) \Bigg) \overset{\circledast}{\leq} \sum_{n} \big( \mu^*\left( A_n \right)+\Ec_n \big) =  \sum_{n} \mu^*\left( A_n \right) + \Ec 
+    \end{equation*}
+
+    Since $\Ec$ is arbitrary, we're done.
+\end{itemize}
+\end{proof}
+
+% ... incompleto
 
 % chapter lebesgue_measure (end)
