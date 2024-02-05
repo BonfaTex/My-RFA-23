@@ -8,6 +8,7 @@ These notes do not cover all the lessons and exercises due to the lack of manpow
 - [30%] Lebesgue Measure
 - [95%] The Lebesgue Integral
 - [101%] Hilbert Spaces
+- [100%] First Exercise Class
 
 I hope you fork this and share your work with me! It will be really nice to have a complete book, don't you think?
 
