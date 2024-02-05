@@ -1,6 +1,15 @@
 # My-RFA-23
 Notes of Real and Functional Analysis for the Master in Mathematical Engineering held by Prof. G. Verzini a.a. 2023/2024, Polimi.
 
+These notes do not cover all the lessons and exercises due to the lack of manpower, however here I list what you will find:
+- [100%] Introduction and Detailed Program
+- [100%] Set Theory
+- [100%] Measure Theory
+- [30%] Lebesgue Measure
+- [95%] The Lebesgue Integral
+- [101%] Hilbert Spaces
+
+I hope you fork this and share your work with me! It will be really nice to have a complete book, don't you think?
 
 ## Licenza
 
