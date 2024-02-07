@@ -46,7 +46,7 @@ A function $d:X\times X\to[0,+\infty)$ is said to be a \textbf{metric/distance} 
 \begin{enumerate}[(a)]
     \item {\makebox[6cm]{$d(x,y)\geq 0$ and $d(x,y)=0$ iff $x=y$\hfill}}
     \item {\makebox[6cm]{$d(x,y)=d(y,x)$\hfill} (symmetry)}
-    \item {\makebox[6cm]{$d(x,y)\leq d(x,z)+d(z,y)$\hfill} (\textbf{triangular inequality})}
+    \item {\makebox[6cm]{$d(x,y)\leq d(x,z)+d(z,y)$\hfill} (\textbf{triangle inequality})}
 \end{enumerate}
 $\forall x,y,z\in X$. If $d$ is a distance on $X$, then $(X,d)$ is called \textbf{metric space}.
 \end{defn}
@@ -73,7 +73,7 @@ Examples:
     {\renewcommand*{\arraystretch}{1.5}
     \begin{array}{ll}
     d_1(x,y)=\sum^{n}_{i=1}\abs{x_i-y_i} &\quad\textbf{Manhattan distance} \\
-    d_\infty(x,y)=\max_{i=1,...,n} \abs{x_i-y_i} &\quad\textbf{uniform/maximum distance} 
+    d_\infty(x,y)=\displaystyle\max_{i=1,...,n} \abs{x_i-y_i} &\quad\textbf{uniform/maximum distance} 
     \end{array}}
     \end{equation*}
 
@@ -159,7 +159,7 @@ B_d(x_0,r)=\begin{cases}
 \end{cases}
 \end{equation*}
 
-Therefore, many possible distances can be introduced on a set. In some cases they lead to the same \emph{structure} but not in genersal. For example, on $X=\Cc^0\left( [a,b] \right)$, $f,g\in X$, we have:
+Therefore, many possible distances can be introduced on a set. In some cases they lead to the same \emph{structure} but not in general. For example, on $X=\Cc^0\left( [a,b] \right)$, $f,g\in X$, we have:
 \begin{itemize}
     \item discrete distance (we've got it folks)
     \item $\displaystyle d_1(f,g):=\int_a^b\left| f(x)-g(x) \right|\dx$
@@ -274,13 +274,12 @@ i.e.
 \end{defn}
 
 \begin{prp}
-The limit (it it exists) is unique \underline{in metric space}.
+The limit (if it exists) is unique \underline{in metric space}.
 \end{prp}
 
 \begin{home}
 Prove it.
 
-\underline{Hint}: assuming by contraddiction that exist $x^*,y^*,x^*\neq y^*$ and then verify the triangular inequality.
 \newline
 \newline
 \newline
@@ -384,7 +383,7 @@ Let $(X,d)$ be a metric space and $E\subset X$ be a set. Then:
 \end{thm}
 
 \begin{thm}[Heine-Borel]
-In $\left( \RR^n,d_E \right)$ (actually any distance), we have $E\subset\RR^n$ compact iff $E$ closed and bounded.
+In $\left( \RR^n,d_E \right)$ (or another distance induced by a norm), we have $E\subset\RR^n$ compact iff $E$ closed and bounded.
 \end{thm}
 
 Its is remarkable that the $\Longleftarrow$ is not true in general, for example it is false in $\infty$-dim. spaces.
@@ -419,7 +418,7 @@ $y_0\in Y$ is the \textbf{limit} of $f(x)$ as $x\to x_0\in X$ if
 Then we write $\displaystyle\lim_{x\to x_0}f(x)=y_0$.
 \end{defn}
 
-As for sequences, the limit (if exists) is unique.
+As for sequences, the limit (if it exists) is unique.
 
 \begin{defn}
 \leavevmode
